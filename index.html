@@ -662,4 +662,206 @@ CARD 3 : HAEMODYNAMIC RESPONSE
   </div>
 
 </div>
+<!-- =========================================
+CARD 4 : PERFUSION RESPONSE
+========================================= -->
+
+<div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg">
+
+  <h2 class="text-base font-bold text-rose-400 border-b border-slate-700 pb-2 mb-4">
+
+    🩸 Perfusion Response
+
+  </h2>
+
+  <div class="overflow-x-auto">
+
+    <table class="w-full text-xs text-center">
+
+      <thead class="bg-slate-900 text-slate-300">
+
+        <tr>
+
+          <th class="p-2">Parameter</th>
+
+          <th class="p-2">Before VP</th>
+
+          <th class="p-2">6 Hours</th>
+
+          <th class="p-2">24 Hours</th>
+
+          <th class="p-2">48 Hours</th>
+
+          <th class="p-2">72 Hours</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr>
+
+          <td>CRT (sec)</td>
+
+          <td><input id="crt-before" type="number" step="0.1"></td>
+
+          <td><input id="crt-6h" type="number" step="0.1"></td>
+
+          <td><input id="crt-24h" type="number" step="0.1"></td>
+
+          <td><input id="crt-48h" type="number" step="0.1"></td>
+
+          <td><input id="crt-72h" type="number" step="0.1"></td>
+
+        </tr>
+
+        <tr>
+
+          <td>Lactate</td>
+
+          <td><input id="lac-before" type="number" step="0.1"></td>
+
+          <td><input id="lac-6h" type="number" step="0.1"></td>
+
+          <td><input id="lac-24h" type="number" step="0.1"></td>
+
+          <td><input id="lac-48h" type="number" step="0.1"></td>
+
+          <td><input id="lac-72h" type="number" step="0.1"></td>
+
+        </tr>
+
+        <tr>
+
+          <td>Urine Output (mL/kg/hr)</td>
+
+          <td><input id="uo-before" type="number" step="0.1"></td>
+
+          <td><input id="uo-6h" type="number" step="0.1"></td>
+
+          <td><input id="uo-24h" type="number" step="0.1"></td>
+
+          <td><input id="uo-48h" type="number" step="0.1"></td>
+
+          <td><input id="uo-72h" type="number" step="0.1"></td>
+
+        </tr>
+
+        <tr>
+
+          <td>Mental Status</td>
+
+          <td>
+
+            <select id="ms-before">
+              <option>Alert</option>
+              <option>Responds To Voice</option>
+              <option>Responds To Pain</option>
+              <option>Unresponsive</option>
+            </select>
+
+          </td>
+
+          <td>
+
+            <select id="ms-6h">
+              <option>Alert</option>
+              <option>Responds To Voice</option>
+              <option>Responds To Pain</option>
+              <option>Unresponsive</option>
+            </select>
+
+          </td>
+
+          <td>
+
+            <select id="ms-24h">
+              <option>Alert</option>
+              <option>Responds To Voice</option>
+              <option>Responds To Pain</option>
+              <option>Unresponsive</option>
+            </select>
+
+          </td>
+
+          <td>
+
+            <select id="ms-48h">
+              <option>Alert</option>
+              <option>Responds To Voice</option>
+              <option>Responds To Pain</option>
+              <option>Unresponsive</option>
+            </select>
+
+          </td>
+
+          <td>
+
+            <select id="ms-72h">
+              <option>Alert</option>
+              <option>Responds To Voice</option>
+              <option>Responds To Pain</option>
+              <option>Unresponsive</option>
+            </select>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <hr class="my-5 border-slate-700">
+
+  <div class="grid grid-cols-3 gap-3">
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        CRT Target Achieved
+      </label>
+
+      <select id="crt-target">
+
+        <option>Yes (<3 sec)</option>
+        <option>No</option>
+
+      </select>
+
+    </div>
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Lactate Clearance %
+      </label>
+
+      <input
+        id="lactate-clearance"
+        readonly>
+
+    </div>
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        U/O Improved
+      </label>
+
+      <select>
+
+        <option>Yes</option>
+        <option>No</option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+</div>
 
