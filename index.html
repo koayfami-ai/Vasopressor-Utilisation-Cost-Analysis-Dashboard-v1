@@ -161,3 +161,263 @@ CARD 1 : PATIENT & VASOPRESSIN INDICATION
   </div>
 
 </div>
+<!-- =========================================
+CARD 2 : VASOPRESSOR & INOTROPE EXPOSURE
+========================================= -->
+
+<div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg">
+
+  <h2 class="text-base font-bold text-emerald-400 border-b border-slate-700 pb-2 mb-4">
+
+    💉 Vasopressor & Inotrope Exposure
+
+  </h2>
+
+  <!-- NORADRENALINE -->
+
+  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
+
+    <h3 class="font-bold text-sky-300 mb-3">
+      Noradrenaline
+    </h3>
+
+    <div class="text-xs text-slate-400 mb-3">
+
+      Standard Preparation:
+      4 ampoules in 50mL syringe
+
+    </div>
+
+    <div class="grid grid-cols-2 gap-3">
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          Starting Dose
+        </label>
+        <input type="number" id="ne-start">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          Peak Dose
+        </label>
+        <input type="number" id="ne-peak">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          Before VP
+        </label>
+        <input type="number" id="ne-before-vp">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          1h After VP
+        </label>
+        <input type="number" id="ne-1h">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          6h After VP
+        </label>
+        <input type="number" id="ne-6h">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          24h After VP
+        </label>
+        <input type="number" id="ne-24h">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          48h After VP
+        </label>
+        <input type="number" id="ne-48h">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          72h After VP
+        </label>
+        <input type="number" id="ne-72h">
+      </div>
+
+    </div>
+
+    <hr class="my-4 border-slate-700">
+
+    <div class="grid grid-cols-2 gap-3">
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          Syringes First 72h
+        </label>
+        <input type="number" id="ne-syringe-72">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          Syringes Entire Stay
+        </label>
+        <input type="number" id="ne-syringe-total">
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mt-3">
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          Cost / Day (RM)
+        </label>
+        <input readonly id="ne-daily-cost">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          Cost First 72h (RM)
+        </label>
+        <input readonly id="ne-cost-72">
+      </div>
+
+      <div>
+        <label class="block text-xs text-slate-300 mb-1">
+          Total Cost (RM)
+        </label>
+        <input readonly id="ne-cost-total">
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- VASOPRESSIN -->
+
+  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
+
+    <h3 class="font-bold text-purple-300 mb-3">
+      Vasopressin
+    </h3>
+
+    <div class="text-xs text-slate-400 mb-3">
+
+      Standard Preparation:
+      20 units in 20mL syringe
+
+    </div>
+
+    <div class="grid grid-cols-2 gap-3">
+
+      <div>
+        <label>Starting Dose</label>
+        <input type="number" id="vp-start">
+      </div>
+
+      <div>
+        <label>Peak Dose</label>
+        <input type="number" id="vp-peak">
+      </div>
+
+      <div>
+        <label>Final Dose</label>
+        <input type="number" id="vp-final">
+      </div>
+
+      <div>
+        <label>Duration (days)</label>
+        <input type="number" id="vp-days">
+      </div>
+
+    </div>
+
+    <hr class="my-4 border-slate-700">
+
+    <div class="grid grid-cols-2 gap-3">
+
+      <div>
+        <label>Syringes First 72h</label>
+        <input type="number" id="vp-syringe-72">
+      </div>
+
+      <div>
+        <label>Syringes Entire Stay</label>
+        <input type="number" id="vp-syringe-total">
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mt-3">
+
+      <div>
+        <label>Cost / Day (RM)</label>
+        <input readonly id="vp-daily-cost">
+      </div>
+
+      <div>
+        <label>Cost First 72h (RM)</label>
+        <input readonly id="vp-cost-72">
+      </div>
+
+      <div>
+        <label>Total Cost (RM)</label>
+        <input readonly id="vp-cost-total">
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- OTHER INOTROPES -->
+
+  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4">
+
+    <h3 class="font-bold text-amber-300 mb-3">
+      Other Inotropes
+    </h3>
+
+    <div class="grid grid-cols-2 gap-4">
+
+      <div>
+
+        <label>Dobutamine Used?</label>
+
+        <select id="dobu-used">
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+
+        <label class="mt-2 block">
+          Peak Dose
+        </label>
+
+        <input type="number">
+
+      </div>
+
+      <div>
+
+        <label>Adrenaline Used?</label>
+
+        <select id="adre-used">
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+
+        <label class="mt-2 block">
+          Peak Dose
+        </label>
+
+        <input type="number">
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
