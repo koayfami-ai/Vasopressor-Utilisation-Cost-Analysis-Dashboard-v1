@@ -1667,3 +1667,81 @@ CARD 7 : OUTCOMES
 
 </div>
 
+
+
+
+</div>   <!-- end of Card 7 -->
+
+<script>
+
+// =========================================
+// VERSION 1.1 CALCULATIONS
+// =========================================
+
+function calculateNEReduction(){
+
+  const before =
+    parseFloat(
+      document.getElementById('ne-before-vp')?.value
+    ) || 0;
+
+  const dose24 =
+    parseFloat(
+      document.getElementById('ne-24h')?.value
+    ) || 0;
+
+  if(before > 0){
+
+    const reduction =
+      ((before - dose24) / before) * 100;
+
+    document.getElementById(
+      'ne-reduction-24h'
+    ).value =
+      reduction.toFixed(1);
+
+  }
+
+}
+
+document.addEventListener(
+  'input',
+  calculateNEReduction
+);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
