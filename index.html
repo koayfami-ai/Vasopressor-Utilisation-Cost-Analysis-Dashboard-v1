@@ -1285,13 +1285,76 @@ CARD 7 : OUTCOMES
 
   </h2>
 
-  <!-- LENGTH OF STAY -->
+  <!-- REVIEW PERIOD -->
 
   <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
 
     <h3 class="font-bold text-green-300 mb-3">
 
-      Length of Stay
+      Review Period
+
+    </h3>
+
+    <select
+      id="review-period"
+      class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+      <option>72 Hours Only</option>
+      <option>Entire Admission</option>
+
+    </select>
+
+  </div>
+
+  <!-- SHORT TERM OUTCOMES -->
+
+  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
+
+    <h3 class="font-bold text-green-300 mb-3">
+
+      Early Outcomes
+
+    </h3>
+
+    <div class="grid grid-cols-2 gap-3">
+
+      <div>
+
+        <label class="block text-xs text-slate-300 mb-1">
+          Target MAP Achieved
+        </label>
+
+        <select>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+      </div>
+
+      <div>
+
+        <label class="block text-xs text-slate-300 mb-1">
+          Alive At 72 Hours
+        </label>
+
+        <select>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FULL ADMISSION OUTCOMES -->
+
+  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
+
+    <h3 class="font-bold text-green-300 mb-3">
+
+      Length Of Stay
 
     </h3>
 
@@ -1300,39 +1363,36 @@ CARD 7 : OUTCOMES
       <div>
 
         <label class="block text-xs text-slate-300 mb-1">
-          ICU LOS (Days)
+          ICU LOS
         </label>
 
         <input
-          id="icu-los"
           type="number"
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+          id="icu-los">
 
       </div>
 
       <div>
 
         <label class="block text-xs text-slate-300 mb-1">
-          Ward LOS (Days)
+          Ward LOS
         </label>
 
         <input
-          id="ward-los"
           type="number"
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+          id="ward-los">
 
       </div>
 
       <div>
 
         <label class="block text-xs text-slate-300 mb-1">
-          Total LOS (Days)
+          Total LOS
         </label>
 
         <input
-          id="total-los"
           type="number"
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+          id="total-los">
 
       </div>
 
@@ -1340,7 +1400,7 @@ CARD 7 : OUTCOMES
 
   </div>
 
-  <!-- DISPOSITION -->
+  <!-- FINAL DISPOSITION -->
 
   <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
 
@@ -1358,9 +1418,7 @@ CARD 7 : OUTCOMES
           Alive To Discharge
         </label>
 
-        <select
-          id="alive-discharge"
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+        <select>
 
           <option>Yes</option>
           <option>No</option>
@@ -1375,13 +1433,10 @@ CARD 7 : OUTCOMES
           Discharge Destination
         </label>
 
-        <select
-          id="discharge-destination"
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+        <select>
 
           <option>Home</option>
-          <option>General Ward</option>
-          <option>ICU</option>
+          <option>Ward</option>
           <option>Stepdown / HDU</option>
           <option>Transferred</option>
           <option>Death</option>
@@ -1394,7 +1449,7 @@ CARD 7 : OUTCOMES
 
   </div>
 
-  <!-- FINAL COMMENTS -->
+  <!-- COMMENTS -->
 
   <div class="bg-slate-900 border border-slate-700 rounded-lg p-4">
 
@@ -1405,9 +1460,8 @@ CARD 7 : OUTCOMES
     </h3>
 
     <textarea
-      id="outcome-comments"
       rows="4"
-      placeholder="Clinical outcome summary, complications, observations..."
+      placeholder="Clinical outcome summary..."
       class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100">
     </textarea>
 
