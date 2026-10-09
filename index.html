@@ -1680,31 +1680,18 @@ CARD 7 : OUTCOMES
 
 function calculateNEReduction(){
 
-  const before =
-    parseFloat(
-      document.getElementById('ne-before-vp')?.value
-    ) || 0;
-
-  const dose24 =
-    parseFloat(
-      document.getElementById('ne-24h')?.value
-    ) || 0;
-
-  if(before > 0){
-
-    const reduction =
-      ((before - dose24) / before) * 100;
-
-    document.getElementById(
-      'ne-reduction-24h'
-    ).value =
-      reduction.toFixed(1);
+const before =
+  parseFloat(document.getElementById('ne-before-vp')?.value) || 0;
+  
 const dose1h =
   parseFloat(document.getElementById('ne-1h')?.value) || 0;
 
 const dose6h =
   parseFloat(document.getElementById('ne-6h')?.value) || 0;
 
+const dose24 =
+    parseFloat(document.getElementById('ne-24h')?.value) || 0;
+    
 const dose48h =
   parseFloat(document.getElementById('ne-48h')?.value) || 0;
 
@@ -1720,6 +1707,10 @@ if(before > 0){
   if(dose6h > 0)
     document.getElementById('ne-reduction-6h').value =
     (((before - dose6h)/before)*100).toFixed(1);
+  
+  if(before24h > 0)
+    document.getElementById('ne-reduction-24h').value =
+   (((before - dose24) / before) * 100).toFixed(1);
 
   if(dose48h > 0)
     document.getElementById('ne-reduction-48h').value =
