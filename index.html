@@ -1285,28 +1285,7 @@ CARD 7 : OUTCOMES
 
   </h2>
 
-  <!-- REVIEW PERIOD -->
-
-  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
-
-    <h3 class="font-bold text-green-300 mb-3">
-
-      Review Period
-
-    </h3>
-
-    <select
-      id="review-period"
-      class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
-      <option>72 Hours Only</option>
-      <option>Entire Admission</option>
-
-    </select>
-
-  </div>
-
-  <!-- SHORT TERM OUTCOMES -->
+  <!-- EARLY OUTCOMES -->
 
   <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
 
@@ -1324,9 +1303,13 @@ CARD 7 : OUTCOMES
           Target MAP Achieved
         </label>
 
-        <select>
+        <select
+          id="target-map-achieved"
+          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
           <option>Yes</option>
           <option>No</option>
+
         </select>
 
       </div>
@@ -1337,9 +1320,13 @@ CARD 7 : OUTCOMES
           Alive At 72 Hours
         </label>
 
-        <select>
+        <select
+          id="alive-72h"
+          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
           <option>Yes</option>
           <option>No</option>
+
         </select>
 
       </div>
@@ -1348,59 +1335,62 @@ CARD 7 : OUTCOMES
 
   </div>
 
-  <!-- FULL ADMISSION OUTCOMES -->
+  <!-- RECOVERY -->
 
   <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
 
     <h3 class="font-bold text-green-300 mb-3">
 
-      Length Of Stay
+      Recovery Milestones
 
     </h3>
 
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-2 gap-3">
 
       <div>
 
         <label class="block text-xs text-slate-300 mb-1">
-          ICU LOS
+          Ward LOS (Days)
         </label>
 
         <input
+          id="ward-los"
           type="number"
-          id="icu-los">
+          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
       </div>
 
       <div>
 
         <label class="block text-xs text-slate-300 mb-1">
-          Ward LOS
+          Weaned To Low Flow Oxygen (Day)
         </label>
 
         <input
+          id="wean-lowflow-day"
           type="number"
-          id="ward-los">
-
-      </div>
-
-      <div>
-
-        <label class="block text-xs text-slate-300 mb-1">
-          Total LOS
-        </label>
-
-        <input
-          type="number"
-          id="total-los">
+          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
       </div>
 
     </div>
 
+    <div class="mt-3">
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Extubated (Day)
+      </label>
+
+      <input
+        id="extubated-day"
+        type="number"
+        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+    </div>
+
   </div>
 
-  <!-- FINAL DISPOSITION -->
+  <!-- DISPOSITION -->
 
   <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mb-4">
 
@@ -1418,7 +1408,9 @@ CARD 7 : OUTCOMES
           Alive To Discharge
         </label>
 
-        <select>
+        <select
+          id="alive-discharge"
+          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
           <option>Yes</option>
           <option>No</option>
@@ -1433,12 +1425,13 @@ CARD 7 : OUTCOMES
           Discharge Destination
         </label>
 
-        <select>
+        <select
+          id="discharge-destination"
+          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
           <option>Home</option>
-          <option>Ward</option>
-          <option>Stepdown / HDU</option>
           <option>Transferred</option>
+          <option>Chronic Cubicle</option>
           <option>Death</option>
 
         </select>
@@ -1460,11 +1453,13 @@ CARD 7 : OUTCOMES
     </h3>
 
     <textarea
+      id="outcome-comments"
       rows="4"
-      placeholder="Clinical outcome summary..."
+      placeholder="Clinical course, complications, recovery milestones..."
       class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100">
     </textarea>
 
   </div>
 
 </div>
+
