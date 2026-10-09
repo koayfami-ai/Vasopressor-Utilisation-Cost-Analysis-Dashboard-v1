@@ -1699,6 +1699,37 @@ function calculateNEReduction(){
       'ne-reduction-24h'
     ).value =
       reduction.toFixed(1);
+const dose1h =
+  parseFloat(document.getElementById('ne-1h')?.value) || 0;
+
+const dose6h =
+  parseFloat(document.getElementById('ne-6h')?.value) || 0;
+
+const dose48h =
+  parseFloat(document.getElementById('ne-48h')?.value) || 0;
+
+const dose72h =
+  parseFloat(document.getElementById('ne-72h')?.value) || 0;
+
+if(before > 0){
+
+  if(dose1h > 0)
+    document.getElementById('ne-reduction-1h').value =
+    (((before - dose1h)/before)*100).toFixed(1);
+
+  if(dose6h > 0)
+    document.getElementById('ne-reduction-6h').value =
+    (((before - dose6h)/before)*100).toFixed(1);
+
+  if(dose48h > 0)
+    document.getElementById('ne-reduction-48h').value =
+    (((before - dose48h)/before)*100).toFixed(1);
+
+  if(dose72h > 0)
+    document.getElementById('ne-reduction-72h').value =
+    (((before - dose72h)/before)*100).toFixed(1);
+
+}
 
   }
 
