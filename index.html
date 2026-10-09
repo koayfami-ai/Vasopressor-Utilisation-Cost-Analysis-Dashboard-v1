@@ -487,4 +487,179 @@ CARD 2 : VASOPRESSOR & INOTROPE EXPOSURE
   </div>
 
 </div>
+<!-- =========================================
+CARD 3 : HAEMODYNAMIC RESPONSE
+========================================= -->
+
+<div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg">
+
+  <h2 class="text-base font-bold text-amber-400 border-b border-slate-700 pb-2 mb-4">
+
+    📈 Haemodynamic Response
+
+  </h2>
+
+  <div class="overflow-x-auto">
+
+    <table class="w-full text-xs text-center">
+
+      <thead class="bg-slate-900 text-slate-300">
+
+        <tr>
+
+          <th class="p-2">Parameter</th>
+
+          <th class="p-2">Before VP</th>
+
+          <th class="p-2">1 Hour</th>
+
+          <th class="p-2">6 Hours</th>
+
+          <th class="p-2">24 Hours</th>
+
+          <th class="p-2">48 Hours</th>
+
+          <th class="p-2">72 Hours</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>HR</td>
+          <td><input id="hr-before" type="number"></td>
+          <td><input id="hr-1h" type="number"></td>
+          <td><input id="hr-6h" type="number"></td>
+          <td><input id="hr-24h" type="number"></td>
+          <td><input id="hr-48h" type="number"></td>
+          <td><input id="hr-72h" type="number"></td>
+        </tr>
+
+        <tr>
+          <td>SBP</td>
+          <td><input id="sbp-before" type="number"></td>
+          <td><input id="sbp-1h" type="number"></td>
+          <td><input id="sbp-6h" type="number"></td>
+          <td><input id="sbp-24h" type="number"></td>
+          <td><input id="sbp-48h" type="number"></td>
+          <td><input id="sbp-72h" type="number"></td>
+        </tr>
+
+        <tr>
+          <td>DBP</td>
+          <td><input id="dbp-before" type="number"></td>
+          <td><input id="dbp-1h" type="number"></td>
+          <td><input id="dbp-6h" type="number"></td>
+          <td><input id="dbp-24h" type="number"></td>
+          <td><input id="dbp-48h" type="number"></td>
+          <td><input id="dbp-72h" type="number"></td>
+        </tr>
+
+        <tr>
+          <td>MAP</td>
+
+          <td><input id="map-before"></td>
+          <td><input id="map-1h"></td>
+          <td><input id="map-6h"></td>
+          <td><input id="map-24h"></td>
+          <td><input id="map-48h"></td>
+          <td><input id="map-72h"></td>
+
+        </tr>
+
+        <tr>
+
+          <td>Shock Index</td>
+
+          <td><input id="si-before" readonly></td>
+          <td><input id="si-1h" readonly></td>
+          <td><input id="si-6h" readonly></td>
+          <td><input id="si-24h" readonly></td>
+          <td><input id="si-48h" readonly></td>
+          <td><input id="si-72h" readonly></td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <hr class="my-5 border-slate-700">
+
+  <h3 class="font-semibold text-rose-300 mb-3">
+
+    Tachyarrhythmia
+
+  </h3>
+
+  <div class="grid grid-cols-2 gap-3">
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Present Initially
+      </label>
+
+      <select id="tachy-present">
+
+        <option>No</option>
+        <option>Yes</option>
+
+      </select>
+
+    </div>
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Type
+      </label>
+
+      <select id="tachy-type">
+
+        <option>None</option>
+        <option>AF</option>
+        <option>SVT</option>
+        <option>VT</option>
+        <option>Other</option>
+
+      </select>
+
+    </div>
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Resolved?
+      </label>
+
+      <select id="tachy-resolved">
+
+        <option>Yes</option>
+        <option>No</option>
+
+      </select>
+
+    </div>
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Time To Resolution (hrs)
+      </label>
+
+      <input
+        id="tachy-resolution-time"
+        type="number"
+        step="0.1">
+
+    </div>
+
+  </div>
+
+</div>
 
