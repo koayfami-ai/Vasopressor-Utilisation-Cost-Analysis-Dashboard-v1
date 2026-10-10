@@ -1719,7 +1719,10 @@ if(before > 0){
   if(dose72h > 0)
     document.getElementById('ne-reduction-72h').value =
     (((before - dose72h)/before)*100).toFixed(1);
- 
+     }
+  });
+}
+
   function calculateShockIndex(){
 
   const timepoints = [
@@ -1749,6 +1752,9 @@ if(before > 0){
         `si-${tp}`
       ).value =
         (hr / sbp).toFixed(2);
+    }
+  });
+}
 
       function calculateMAP(){
 
@@ -1782,7 +1788,10 @@ if(before > 0){
           (sbp + (2 * dbp)) / 3
         ).toFixed(0);
 
-    }
+        }
+  });
+}
+
 
 function calculateLactateClearance(){
 
@@ -1805,6 +1814,10 @@ function calculateLactateClearance(){
       'lactate-clearance'
     ).value =
       clearance.toFixed(1);
+    }
+  });
+}
+    
 function calculateCost(){
 
   // Hospital pricing
@@ -1884,6 +1897,9 @@ function calculateCost(){
     'cost-total'
   ).value =
     totalCost.toFixed(2);
+    }
+  });
+}
 
 function updateSummary(){
 
@@ -1966,8 +1982,10 @@ function updateSummary(){
     document.getElementById(
       'alive-discharge'
     )?.value || '--';
-
+    }
+  });
 }
+      
 document.addEventListener('input', () => {
 
   calculateNEReduction();
