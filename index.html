@@ -1770,6 +1770,80 @@ function calculateLactateClearance(){
       'lactate-clearance'
     ).value =
       clearance.toFixed(1);
+function calculateCost(){
+
+  // Hospital prices
+
+  const neCostPerSyringe = 21.91;
+
+  const vpCostPerSyringe = 18.68;
+
+  // NE
+
+  const ne72 =
+    parseFloat(
+      document.getElementById('ne-syringe-72')?.value
+    ) || 0;
+
+  const neTotal =
+    parseFloat(
+      document.getElementById('ne-syringe-total')?.value
+    ) || 0;
+
+  // VP
+
+  const vp72 =
+    parseFloat(
+      document.getElementById('vp-syringe-72')?.value
+    ) || 0;
+
+  const vpTotal =
+    parseFloat(
+      document.getElementById('vp-syringe-total')?.value
+    ) || 0;
+
+  // Cost First 72h
+
+  const cost72 =
+    (ne72 * neCostPerSyringe)
+    +
+    (vp72 * vpCostPerSyringe);
+
+  // Total Cost
+
+  const totalCost =
+    (neTotal * neCostPerSyringe)
+    +
+    (vpTotal * vpCostPerSyringe);
+
+  document.getElementById(
+    'cost-72h'
+  ).value =
+    cost72.toFixed(2);
+
+  document.getElementById(
+    'cost-total'
+  ).value =
+    totalCost.toFixed(2);
+function updateSummary(){
+
+  document.getElementById(
+    'summary-ne-reduction'
+  ).textContent =
+    document.getElementById(
+      'ne-reduction-72h'
+    ).value || '--';
+
+  document.getElementById(
+    'summary-lactate'
+  ).textContent =
+    document.getElementById(
+      'lactate-clearance'
+    ).value || '--';
+
+}
+
+}
 
   }
 
@@ -1781,12 +1855,7 @@ function calculateLactateClearance(){
 
 }
 
-}
-
-  }
-
-}
-document.addEventListener('input', () => {
+  document.addEventListener('input', () => {
 
   calculateNEReduction();
 
@@ -1794,9 +1863,11 @@ document.addEventListener('input', () => {
 
   calculateLactateClearance();
 
+  calculateCost();
 
+  update summary();
 
-  
+    
 });
 
 
