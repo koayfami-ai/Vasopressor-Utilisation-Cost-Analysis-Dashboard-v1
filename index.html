@@ -1749,6 +1749,41 @@ if(before > 0){
         `si-${tp}`
       ).value =
         (hr / sbp).toFixed(2);
+
+      function calculateMAP(){
+
+  const timepoints = [
+    'before',
+    '1h',
+    '6h',
+    '24h',
+    '48h',
+    '72h'
+  ];
+
+  timepoints.forEach(tp => {
+
+    const sbp =
+      parseFloat(
+        document.getElementById(`sbp-${tp}`)?.value
+      ) || 0;
+
+    const dbp =
+      parseFloat(
+        document.getElementById(`dbp-${tp}`)?.value
+      ) || 0;
+
+    if(sbp > 0 && dbp > 0){
+
+      document.getElementById(
+        `map-${tp}`
+      ).value =
+        (
+          (sbp + (2 * dbp)) / 3
+        ).toFixed(0);
+
+    }
+
 function calculateLactateClearance(){
 
   const before =
@@ -1849,6 +1884,7 @@ function calculateCost(){
     'cost-total'
   ).value =
     totalCost.toFixed(2);
+
 function updateSummary(){
 
   // NE Reduction
@@ -1869,6 +1905,24 @@ function updateSummary(){
       'lactate-clearance'
     )?.value || '--';
 
+  // Time To MAP
+
+  document.getElementById(
+    'summary-map-time'
+  ).textContent =
+    document.getElementById(
+      'time-target-map'
+    )?.value || '--';
+
+  // Highest FiO2
+
+  document.getElementById(
+    'summary-fio2'
+  ).textContent =
+    document.getElementById(
+      'highest-fio2'
+    )?.value || '--';
+
   // Cost 72h
 
   document.getElementById(
@@ -1878,42 +1932,47 @@ function updateSummary(){
       'cost-72h'
     )?.value || '--';
 
-  // FiO₂
+  // Shock Index Trend
+
+  const siBefore =
+    document.getElementById('si-before')?.value || '--';
+
+  const si72 =
+    document.getElementById('si-72h')?.value || '--';
 
   document.getElementById(
-    'summary-fio2'
+    'summary-si'
   ).textContent =
-    document.getElementById(
-      'highest-fio2'
-    )?.value || '--';
+    `${siBefore} → ${si72}`;
+
+  // CRT Trend
+
+  const crtBefore =
+    document.getElementById('crt-before')?.value || '--';
+
+  const crt72 =
+    document.getElementById('crt-72h')?.value || '--';
+
+  document.getElementById(
+    'summary-crt'
+  ).textContent =
+    `${crtBefore} → ${crt72}`;
 
   // Survival
-
-  const survival =
-    document.getElementById(
-      'alive-discharge'
-    )?.value || '--';
 
   document.getElementById(
     'summary-survival'
   ).textContent =
-    survival;
+    document.getElementById(
+      'alive-discharge'
+    )?.value || '--';
 
 }
-
-  }
-
-}
-
-    }
-
-  });
-
-}
-
-  document.addEventListener('input', () => {
+document.addEventListener('input', () => {
 
   calculateNEReduction();
+
+  calculateMAP();
 
   calculateShockIndex();
 
@@ -1921,9 +1980,8 @@ function updateSummary(){
 
   calculateCost();
 
-  updatesummary();
+  updateSummary();
 
-    
 });
 
 
