@@ -1772,13 +1772,13 @@ function calculateLactateClearance(){
       clearance.toFixed(1);
 function calculateCost(){
 
-  // Hospital prices
+  // Hospital pricing
 
   const neCostPerSyringe = 21.91;
 
   const vpCostPerSyringe = 18.68;
 
-  // NE
+  // Noradrenaline
 
   const ne72 =
     parseFloat(
@@ -1790,7 +1790,7 @@ function calculateCost(){
       document.getElementById('ne-syringe-total')?.value
     ) || 0;
 
-  // VP
+  // Vasopressin
 
   const vp72 =
     parseFloat(
@@ -1802,24 +1802,48 @@ function calculateCost(){
       document.getElementById('vp-syringe-total')?.value
     ) || 0;
 
-  // Cost First 72h
+  // Individual 72h costs
 
-  const cost72 =
-    (ne72 * neCostPerSyringe)
-    +
-    (vp72 * vpCostPerSyringe);
+  const ne72Cost =
+    ne72 * neCostPerSyringe;
 
-  // Total Cost
+  const vp72Cost =
+    vp72 * vpCostPerSyringe;
 
-  const totalCost =
-    (neTotal * neCostPerSyringe)
-    +
-    (vpTotal * vpCostPerSyringe);
+  // Individual total costs
+
+  const neTotalCost =
+    neTotal * neCostPerSyringe;
+
+  const vpTotalCost =
+    vpTotal * vpCostPerSyringe;
+
+  // Daily costs
+
+  document.getElementById(
+    'ne-cost-day'
+  ).value =
+    (ne72Cost / 3).toFixed(2);
+
+  document.getElementById(
+    'vp-cost-day'
+  ).value =
+    (vp72Cost / 3).toFixed(2);
+
+  // 72h total
+
+  const total72 =
+    ne72Cost + vp72Cost;
 
   document.getElementById(
     'cost-72h'
   ).value =
-    cost72.toFixed(2);
+    total72.toFixed(2);
+
+  // Entire stay total
+
+  const totalCost =
+    neTotalCost + vpTotalCost;
 
   document.getElementById(
     'cost-total'
@@ -1827,21 +1851,53 @@ function calculateCost(){
     totalCost.toFixed(2);
 function updateSummary(){
 
+  // NE Reduction
+
   document.getElementById(
     'summary-ne-reduction'
   ).textContent =
     document.getElementById(
       'ne-reduction-72h'
-    ).value || '--';
+    )?.value || '--';
+
+  // Lactate Clearance
 
   document.getElementById(
     'summary-lactate'
   ).textContent =
     document.getElementById(
       'lactate-clearance'
-    ).value || '--';
+    )?.value || '--';
 
-}
+  // Cost 72h
+
+  document.getElementById(
+    'summary-cost72'
+  ).textContent =
+    document.getElementById(
+      'cost-72h'
+    )?.value || '--';
+
+  // FiO₂
+
+  document.getElementById(
+    'summary-fio2'
+  ).textContent =
+    document.getElementById(
+      'highest-fio2'
+    )?.value || '--';
+
+  // Survival
+
+  const survival =
+    document.getElementById(
+      'alive-discharge'
+    )?.value || '--';
+
+  document.getElementById(
+    'summary-survival'
+  ).textContent =
+    survival;
 
 }
 
@@ -1865,7 +1921,7 @@ function updateSummary(){
 
   calculateCost();
 
-  update summary();
+  updatesummary();
 
     
 });
