@@ -1879,14 +1879,39 @@ function calculateCost(){
   const vpDay =
     (vp72 * vpCostPerSyringe) / 3;
 
-  const neDaily =
-    document.getElementById('ne-cost-day');
+const neDay =
+  (ne72 * neCostPerSyringe) / 3;
+
+const neDailyField =
+  document.getElementById(
+    'summary-ne-cost-day'
+  );
+
+if(neDailyField){
+
+  neDailyField.value =
+    neDay.toFixed(2);
+
+}
+
 
   if(neDaily)
     neDaily.value = neDay.toFixed(2);
 
-  const vpDaily =
-    document.getElementById('vp-cost-day');
+  const vpDay =
+  (vp72 * vpCostPerSyringe) / 3;
+
+const vpDailyField =
+  document.getElementById(
+    'summary-vp-cost-day'
+  );
+
+if(vpDailyField){
+
+  vpDailyField.value =
+    vpDay.toFixed(2);
+
+}
 
   if(vpDaily)
     vpDaily.value = vpDay.toFixed(2);
