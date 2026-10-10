@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -1453,18 +1455,6 @@ CARD 6 : COST ANALYSIS
           class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
       </div>
-<div>
-
-  <label class="block text-xs text-slate-300 mb-1">
-    Total Daily Cost (RM)
-  </label>
-
-  <input
-    id="total-cost-day"
-    readonly
-    class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
-</div>
 
     </div>
 
@@ -1891,57 +1881,14 @@ function calculateCost(){
   const vpDay =
     (vp72 * vpCostPerSyringe) / 3;
 
-const neDay =
-  (ne72 * neCostPerSyringe) / 3;
-
-const neDailyField =
-  document.getElementById(
-    'summary-ne-cost-day'
-  );
-
-if(neDailyField){
-
-  neDailyField.value =
-    neDay.toFixed(2);
-
-}
-
+  const neDaily =
+    document.getElementById('ne-cost-day');
 
   if(neDaily)
     neDaily.value = neDay.toFixed(2);
 
-  const vpDay =
-  (vp72 * vpCostPerSyringe) / 3;
-
-const vpDailyField =
-  document.getElementById(
-    'summary-vp-cost-day'
-  );
-
-if(vpDailyField){
-
-  vpDailyField.value =
-    vpDay.toFixed(2);
-
-}
-      
-const totalDailyCost =
-  neDay +
-  vpDay;
-
-const totalDailyField =
-  document.getElementById(
-    'total-cost-day'
-  );
-
-if(totalDailyField){
-
-  totalDailyField.value =
-    totalDailyCost.toFixed(2);
-
-}
-
-}
+  const vpDaily =
+    document.getElementById('vp-cost-day');
 
   if(vpDaily)
     vpDaily.value = vpDay.toFixed(2);
