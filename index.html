@@ -1749,6 +1749,31 @@ if(before > 0){
         `si-${tp}`
       ).value =
         (hr / sbp).toFixed(2);
+function calculateLactateClearance(){
+
+  const before =
+    parseFloat(
+      document.getElementById('lac-before')?.value
+    ) || 0;
+
+  const current =
+    parseFloat(
+      document.getElementById('lac-72h')?.value
+    ) || 0;
+
+  if(before > 0 && current >= 0){
+
+    const clearance =
+      ((before - current) / before) * 100;
+
+    document.getElementById(
+      'lactate-clearance'
+    ).value =
+      clearance.toFixed(1);
+
+  }
+
+}
 
     }
 
@@ -1761,13 +1786,17 @@ if(before > 0){
   }
 
 }
-
 document.addEventListener('input', () => {
 
   calculateNEReduction();
 
   calculateShockIndex();
 
+  calculateLactateClearance();
+
+
+
+  
 });
 
 
