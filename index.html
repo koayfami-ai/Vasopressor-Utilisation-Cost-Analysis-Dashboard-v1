@@ -1848,65 +1848,122 @@ function calculateLactateClearance(){
 
   }
 
-}
-
-function calculateCost(){
+}function calculateCost(){
 
   const neCostPerSyringe = 21.91;
   const vpCostPerSyringe = 18.68;
 
-  const ne72 =
-    parseFloat(document.getElementById('ne-syringe-72')?.value) || 0;
+  // Noradrenaline
 
-  const vp72 =
-    parseFloat(document.getElementById('vp-syringe-72')?.value) || 0;
+  const ne72 =
+    parseFloat(
+      document.getElementById('ne-syringe-72')?.value
+    ) || 0;
 
   const neTotal =
-    parseFloat(document.getElementById('ne-syringe-total')?.value) || 0;
+    parseFloat(
+      document.getElementById('ne-syringe-total')?.value
+    ) || 0;
+
+  // Vasopressin
+
+  const vp72 =
+    parseFloat(
+      document.getElementById('vp-syringe-72')?.value
+    ) || 0;
 
   const vpTotal =
-    parseFloat(document.getElementById('vp-syringe-total')?.value) || 0;
+    parseFloat(
+      document.getElementById('vp-syringe-total')?.value
+    ) || 0;
 
-  const cost72 =
-    (ne72 * neCostPerSyringe) +
-    (vp72 * vpCostPerSyringe);
+  // Costs
 
-  const totalCost =
-    (neTotal * neCostPerSyringe) +
-    (vpTotal * vpCostPerSyringe);
+  const ne72Cost =
+    ne72 * neCostPerSyringe;
+
+  const vp72Cost =
+    vp72 * vpCostPerSyringe;
+
+  const neTotalCost =
+    neTotal * neCostPerSyringe;
+
+  const vpTotalCost =
+    vpTotal * vpCostPerSyringe;
 
   const neDay =
-    (ne72 * neCostPerSyringe) / 3;
+    ne72Cost / 3;
 
   const vpDay =
-    (vp72 * vpCostPerSyringe) / 3;
+    vp72Cost / 3;
 
-  const neDaily =
-    document.getElementById('ne-cost-day');
+  // Daily costs
 
-  if(neDaily)
-    neDaily.value = neDay.toFixed(2);
+  const neBox =
+    document.getElementById(
+      'summary-ne-cost-day'
+    );
 
-  const vpDaily =
-    document.getElementById('vp-cost-day');
+  if(neBox){
 
-  if(vpDaily)
-    vpDaily.value = vpDay.toFixed(2);
+    neBox.value =
+      neDay.toFixed(2);
 
-  const cost72Field =
-    document.getElementById('cost-72h');
+  }
 
-  if(cost72Field)
-    cost72Field.value = cost72.toFixed(2);
+  const vpBox =
+    document.getElementById(
+      'summary-vp-cost-day'
+    );
 
-  const totalField =
-    document.getElementById('cost-total');
+  if(vpBox){
 
-  if(totalField)
-    totalField.value = totalCost.toFixed(2);
+    vpBox.value =
+      vpDay.toFixed(2);
+
+  }
+
+  // Combined 72h cost
+
+  const total72 =
+    ne72Cost + vp72Cost;
+
+  const cost72Box =
+    document.getElementById(
+      'summary-cost-72h'
+    );
+
+  if(cost72Box){
+
+    cost72Box.value =
+      total72.toFixed(2);
+
+  }
+
+  // Combined total stay cost
+
+  const totalCost =
+    neTotalCost + vpTotalCost;
+
+  const totalBox =
+    document.getElementById(
+      'summary-cost-total'
+    );
+
+  if(totalBox){
+
+    totalBox.value =
+      totalCost.toFixed(2);
+
+  }
 
 }
 
+
+
+
+
+      
 function updateSummary(){
 
   const setText = (target, source) => {
