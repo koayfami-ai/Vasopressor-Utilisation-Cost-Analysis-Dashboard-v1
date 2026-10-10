@@ -541,13 +541,6 @@ CARD 2 : VASOPRESSOR & INOTROPE EXPOSURE
 </div>
 
        
-      
-
-   
-
-
-       
-   
 
     
   <!-- VASOPRESSIN -->
@@ -880,8 +873,10 @@ CARD 3 : HAEMODYNAMIC RESPONSE
         <option>None</option>
         <option>AF</option>
         <option>SVT</option>
-        <option>VT</option>
+        <option>VT/VF</option>
         <option>Other</option>
+      <option>MAT</option>
+      <option>Atrial flutter</option>
 
       </select>
 
@@ -946,8 +941,6 @@ CARD 4 : PERFUSION RESPONSE
 
           <th class="p-2">24 Hours</th>
 
-          <th class="p-2">48 Hours</th>
-
           <th class="p-2">72 Hours</th>
 
         </tr>
@@ -966,8 +959,6 @@ CARD 4 : PERFUSION RESPONSE
 
           <td><input id="crt-24h" type="number" step="0.1"></td>
 
-          <td><input id="crt-48h" type="number" step="0.1"></td>
-
           <td><input id="crt-72h" type="number" step="0.1"></td>
 
         </tr>
@@ -981,8 +972,6 @@ CARD 4 : PERFUSION RESPONSE
           <td><input id="lac-6h" type="number" step="0.1"></td>
 
           <td><input id="lac-24h" type="number" step="0.1"></td>
-
-          <td><input id="lac-48h" type="number" step="0.1"></td>
 
           <td><input id="lac-72h" type="number" step="0.1"></td>
 
@@ -998,8 +987,6 @@ CARD 4 : PERFUSION RESPONSE
 
           <td><input id="uo-24h" type="number" step="0.1"></td>
 
-          <td><input id="uo-48h" type="number" step="0.1"></td>
-
           <td><input id="uo-72h" type="number" step="0.1"></td>
 
         </tr>
@@ -1012,6 +999,7 @@ CARD 4 : PERFUSION RESPONSE
 
             <select id="ms-before">
               <option>Alert</option>
+             <option>Lethargy</option>
               <option>Responds To Voice</option>
               <option>Responds To Pain</option>
               <option>Unresponsive</option>
@@ -1023,6 +1011,7 @@ CARD 4 : PERFUSION RESPONSE
 
             <select id="ms-6h">
               <option>Alert</option>
+              <option>Lethargy</option>
               <option>Responds To Voice</option>
               <option>Responds To Pain</option>
               <option>Unresponsive</option>
@@ -1034,6 +1023,7 @@ CARD 4 : PERFUSION RESPONSE
 
             <select id="ms-24h">
               <option>Alert</option>
+              <option>Lethargy</option>
               <option>Responds To Voice</option>
               <option>Responds To Pain</option>
               <option>Unresponsive</option>
@@ -1045,6 +1035,7 @@ CARD 4 : PERFUSION RESPONSE
 
             <select id="ms-48h">
               <option>Alert</option>
+              <option>Lethargy</option>
               <option>Responds To Voice</option>
               <option>Responds To Pain</option>
               <option>Unresponsive</option>
@@ -1056,6 +1047,7 @@ CARD 4 : PERFUSION RESPONSE
 
             <select id="ms-72h">
               <option>Alert</option>
+             <option>Lethargy</option>
               <option>Responds To Voice</option>
               <option>Responds To Pain</option>
               <option>Unresponsive</option>
@@ -1154,7 +1146,7 @@ CARD 5 : ORGAN SUPPORT
 
         <option>Room Air</option>
         <option>Nasal Cannula</option>
-        <option>Simple Mask</option>
+        <option>Simple Face Mask</option>
         <option>Venturi Mask</option>
         <option>NRBM</option>
         <option>HFNC</option>
@@ -1359,69 +1351,10 @@ CARD 6 : COST ANALYSIS
 
       </div>
 
-      <div>
-
-        <label class="block text-xs text-slate-300 mb-1">
-          Dobutamine Cost / Day (RM)
-        </label>
-
-        <input
-          id="dobu-cost-day"
-          readonly
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
-      </div>
-
-      <div>
-
-        <label class="block text-xs text-slate-300 mb-1">
-          Adrenaline Cost / Day (RM)
-        </label>
-
-        <input
-          id="adre-cost-day"
-          readonly
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
-      </div>
-
+      
     </div>
 
   </div>
-
-  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
-
-    <h3 class="font-bold text-amber-300 mb-3">
-      Cumulative Cost
-    </h3>
-
-    <div class="grid grid-cols-2 gap-3">
-
-      <div>
-
-        <label class="block text-xs text-slate-300 mb-1">
-          Cost First 72h (RM)
-        </label>
-
-        <input
-          id="summary-cost-72h"
-          readonly
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
-      </div>
-
-      <div>
-
-        <label class="block text-xs text-slate-300 mb-1">
-          Total Cost During Stay (RM)
-        </label>
-
-        <input
-          id="summary-cost-total"
-          readonly
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
-      </div>
 
     </div>
 
