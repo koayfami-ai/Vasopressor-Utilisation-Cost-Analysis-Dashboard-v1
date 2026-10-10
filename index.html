@@ -1679,6 +1679,295 @@ CARD 7 : OUTCOMES
 // VERSION 1.1 CALCULATIONS
 // =========================================
 
+function calculateNEReduction(){
+
+  const before =
+    parseFloat(document.getElementById('ne-before-vp')?.value) || 0;
+
+  const dose1h =
+    parseFloat(document.getElementById('ne-1h')?.value) || 0;
+
+  const dose6h =
+    parseFloat(document.getElementById('ne-6h')?.value) || 0;
+
+  const dose24 =
+    parseFloat(document.getElementById('ne-24h')?.value) || 0;
+
+  const dose48 =
+    parseFloat(document.getElementById('ne-48h')?.value) || 0;
+
+  const dose72 =
+    parseFloat(document.getElementById('ne-72h')?.value) || 0;
+
+  if(before > 0){
+
+    if(dose1h > 0)
+      document.getElementById('ne-reduction-1h').value =
+        (((before - dose1h)/before)*100).toFixed(1);
+
+    if(dose6h > 0)
+      document.getElementById('ne-reduction-6h').value =
+        (((before - dose6h)/before)*100).toFixed(1);
+
+    if(dose24 > 0)
+      document.getElementById('ne-reduction-24h').value =
+        (((before - dose24)/before)*100).toFixed(1);
+
+    if(dose48 > 0)
+      document.getElementById('ne-reduction-48h').value =
+        (((before - dose48)/before)*100).toFixed(1);
+
+    if(dose72 > 0)
+      document.getElementById('ne-reduction-72h').value =
+        (((before - dose72)/before)*100).toFixed(1);
+
+  }
+
+}
+
+function calculateMAP(){
+
+  const tp = ['before','1h','6h','24h','48h','72h'];
+
+  tp.forEach(t => {
+
+    const sbp =
+      parseFloat(
+        document.getElementById(`sbp-${t}`)?.value
+      ) || 0;
+
+    const dbp =
+      parseFloat(
+        document.getElementById(`dbp-${t}`)?.value
+      ) || 0;
+
+    if(sbp && dbp){
+
+      document.getElementById(`map-${t}`).value =
+        ((sbp + (2 * dbp))/3).toFixed(0);
+
+    }
+
+  });
+
+}
+
+function calculateShockIndex(){
+
+  const tp = ['before','1h','6h','24h','48h','72h'];
+
+  tp.forEach(t => {
+
+    const hr =
+      parseFloat(
+        document.getElementById(`hr-${t}`)?.value
+      ) || 0;
+
+    const sbp =
+      parseFloat(
+        document.getElementById(`sbp-${t}`)?.value
+      ) || 0;
+
+    if(hr && sbp){
+
+      document.getElementById(`si-${t}`).value =
+        (hr / sbp).toFixed(2);
+
+    }
+
+  });
+
+}
+
+function calculateLactateClearance(){
+
+  const before =
+    parseFloat(
+      document.getElementById('lac-before')?.value
+    ) || 0;
+
+  const current =
+    parseFloat(
+      document.getElementById('lac-72h')?.value
+    ) || 0;
+
+  if(before > 0){
+
+    const clearance =
+      ((before - current)/before)*100;
+
+    document.getElementById(
+      'lactate-clearance'
+    ).value =
+      clearance.toFixed(1);
+
+  }
+
+}
+
+function calculateCost(){
+
+  const neCostPerSyringe = 21.91;
+  const vpCostPerSyringe = 18.68;
+
+  const ne72 =
+    parseFloat(document.getElementById('ne-syringe-72')?.value) || 0;
+
+  const vp72 =
+    parseFloat(document.getElementById('vp-syringe-72')?.value) || 0;
+
+  const neTotal =
+    parseFloat(document.getElementById('ne-syringe-total')?.value) || 0;
+
+  const vpTotal =
+    parseFloat(document.getElementById('vp-syringe-total')?.value) || 0;
+
+  const cost72 =
+    (ne72 * neCostPerSyringe) +
+    (vp72 * vpCostPerSyringe);
+
+  const totalCost =
+    (neTotal * neCostPerSyringe) +
+    (vpTotal * vpCostPerSyringe);
+
+  const neDay =
+    (ne72 * neCostPerSyringe) / 3;
+
+  const vpDay =
+    (vp72 * vpCostPerSyringe) / 3;
+
+  const neDaily =
+    document.getElementById('ne-cost-day');
+
+  if(neDaily)
+    neDaily.value = neDay.toFixed(2);
+
+  const vpDaily =
+    document.getElementById('vp-cost-day');
+
+  if(vpDaily)
+    vpDaily.value = vpDay.toFixed(2);
+
+  const cost72Field =
+    document.getElementById('cost-72h');
+
+  if(cost72Field)
+    cost72Field.value = cost72.toFixed(2);
+
+  const totalField =
+    document.getElementById('cost-total');
+
+  if(totalField)
+    totalField.value = totalCost.toFixed(2);
+
+}
+
+function updateSummary(){
+
+  const setText = (target, source) => {
+
+    const targetEl =
+      document.getElementById(target);
+
+    const sourceEl =
+      document.getElementById(source);
+
+    if(targetEl && sourceEl){
+
+      targetEl.textContent =
+        sourceEl.value || '--';
+
+    }
+
+  };
+
+  setText(
+    'summary-ne-reduction',
+    'ne-reduction-72h'
+  );
+
+  setText(
+    'summary-lactate',
+    'lactate-clearance'
+  );
+
+  setText(
+    'summary-cost72',
+    'cost-72h'
+  );
+
+  setText(
+    'summary-map-time',
+    'time-target-map'
+  );
+
+  setText(
+    'summary-fio2',
+    'highest-fio2'
+  );
+
+  const survival =
+    document.getElementById('alive-discharge');
+
+  const summarySurvival =
+    document.getElementById('summary-survival');
+
+  if(survival && summarySurvival){
+
+    summarySurvival.textContent =
+      survival.value;
+
+  }
+
+  const siBefore =
+    document.getElementById('si-before')?.value || '--';
+
+  const si72 =
+    document.getElementById('si-72h')?.value || '--';
+
+  const summarySI =
+    document.getElementById('summary-si');
+
+  if(summarySI){
+
+    summarySI.textContent =
+      `${siBefore} → ${si72}`;
+
+  }
+
+  const crtBefore =
+    document.getElementById('crt-before')?.value || '--';
+
+  const crt72 =
+    document.getElementById('crt-72h')?.value || '--';
+
+  const summaryCRT =
+    document.getElementById('summary-crt');
+
+  if(summaryCRT){
+
+    summaryCRT.textContent =
+      `${crtBefore} → ${crt72}`;
+
+  }
+
+}
+
+document.addEventListener('input', () => {
+
+  calculateNEReduction();
+
+  calculateMAP();
+
+  calculateShockIndex();
+
+  calculateLactateClearance();
+
+  calculateCost();
+
+  updateSummary();
+
+});
 
     
 
