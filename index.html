@@ -1719,8 +1719,7 @@ if(before > 0){
   if(dose72h > 0)
     document.getElementById('ne-reduction-72h').value =
     (((before - dose72h)/before)*100).toFixed(1);
-     }
-  });
+   
 }
 
   function calculateShockIndex(){
@@ -1753,8 +1752,6 @@ if(before > 0){
       ).value =
         (hr / sbp).toFixed(2);
     }
-  });
-}
 
       function calculateMAP(){
 
@@ -1788,10 +1785,7 @@ if(before > 0){
           (sbp + (2 * dbp)) / 3
         ).toFixed(0);
 
-        }
-  });
-}
-
+    }
 
 function calculateLactateClearance(){
 
@@ -1815,8 +1809,6 @@ function calculateLactateClearance(){
     ).value =
       clearance.toFixed(1);
     }
-  });
-}
     
 function calculateCost(){
 
@@ -1898,8 +1890,6 @@ function calculateCost(){
   ).value =
     totalCost.toFixed(2);
     }
-  });
-}
 
 function updateSummary(){
 
@@ -1983,8 +1973,6 @@ function updateSummary(){
       'alive-discharge'
     )?.value || '--';
     }
-  });
-}
       
 document.addEventListener('input', () => {
 
