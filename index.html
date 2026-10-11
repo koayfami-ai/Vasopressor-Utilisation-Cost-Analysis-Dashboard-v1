@@ -294,58 +294,47 @@ CARD 1 : PATIENT & VASOPRESSIN INDICATION
 
   <!-- VP INDICATION -->
 
-  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
 
-    <h3 class="font-bold text-amber-300 mb-3">
+<div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
 
-      Reason Vasopressin Started
+  <h3 class="font-bold text-amber-300 mb-4">
+    Reason Vasopressin Started
+  </h3>
 
-    </h3>
-        
-<div class="space-y-3 text-sm">
+  <div class="space-y-4">
 
-  <label class="flex items-center gap-2 text-slate-100">
+    <label class="flex items-center gap-3 text-slate-100">
+      <input type="checkbox" id="vp-ne025">
+      <span>NE > 0.25 mcg/kg/min</span>
+    </label>
 
-    <input type="checkbox" id="vp-ne025">
+    <label class="flex items-center gap-3 text-slate-100">
+      <input type="checkbox" id="vp-rv">
+      <span>RV Dysfunction</span>
+    </label>
 
-    <span>NE > 0.25 mcg/kg/min</span>
+    <label class="flex items-center gap-3 text-slate-100">
+      <input type="checkbox" id="vp-vasoplegia">
+      <span>Vasoplegic Shock</span>
+    </label>
 
-  </label>
-
-  <label class="flex items-center gap-2 text-slate-100">
-
-    <input type="checkbox" id="vp-rv">
-
-    <span>RV Dysfunction</span>
-
-  </label>
-
-  <label class="flex items-center gap-2 text-slate-100">
-
-    <span><input type="checkbox" id="vp-vasoplegia"></span>
-
-    <span>Vasoplegic Shock</span>
-
-  </label>
-
-  <label class="flex items-center gap-2 text-slate-100">
-
-    <input type="checkbox" id="vp-other">
-
-    <span>Other</span>
-
-  </label>
-
-</div>
-
-    <textarea
-      id="vp-other-text"
-      rows="2"
-      placeholder="Specify indication..."
-      class="mt-3 w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100">
-    </textarea>
+    <label class="flex items-center gap-3 text-slate-100">
+      <input type="checkbox" id="vp-other">
+      <span>Other</span>
+    </label>
 
   </div>
+
+  <textarea
+    id="vp-other-text"
+    rows="2"
+    placeholder="Specify indication..."
+    class="mt-4 w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100">
+  </textarea>
+
+</div>
+b
+
 
   <!-- TARGETS -->
 
@@ -727,7 +716,7 @@ class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-whi
 CONFOUNDING INTERVENTIONS
 ========================================= -->
 
-<div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
+      <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
 
   <h3 class="font-bold text-amber-300 mb-3">
 
@@ -735,58 +724,41 @@ CONFOUNDING INTERVENTIONS
 
   </h3>
 
-  <div class="space-y-3 text-sm">
+      
+      <div class="space-y-4">
 
-
-  <label class="flex items-center gap-2 text-slate-100">
-
+  <label class="flex items-center gap-3 text-slate-100">
     <input type="checkbox" id="fluid-bolus">
-
     <span>Fluid Bolus Given</span>
-
   </label>
 
-  <label class="flex items-center gap-2 text-slate-100">
-
+  <label class="flex items-center gap-3 text-slate-100">
     <input type="checkbox" id="blood-product">
-
     <span>Blood Products Given</span>
-
   </label>
 
-  <label class="flex items-center gap-2 text-slate-100">
-
+  <label class="flex items-center gap-3 text-slate-100">
     <input type="checkbox" id="dobu-started">
-
     <span>Dobutamine Started During Review</span>
-
   </label>
 
-  <label class="flex items-center gap-2 text-slate-100">
-
+  <label class="flex items-center gap-3 text-slate-100">
     <input type="checkbox" id="adre-started">
-
     <span>Adrenaline Started During Review</span>
-
   </label>
 
-  <label class="flex items-center gap-2 text-slate-100">
-
+  <label class="flex items-center gap-3 text-slate-100">
     <input type="checkbox" id="mv-started">
-
     <span>Mechanical Ventilation Started During Review</span>
-
   </label>
 
-  <label class="flex items-center gap-2 text-slate-100">
-
+  <label class="flex items-center gap-3 text-slate-100">
     <input type="checkbox" id="rrt-started">
-
     <span>RRT Started During Review</span>
-
   </label>
 
 </div>
+
 
   </div>
 
