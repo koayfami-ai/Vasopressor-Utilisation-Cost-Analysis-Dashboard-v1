@@ -37,6 +37,25 @@ textarea{
 </head>
 
 <body class="bg-slate-900 text-slate-100 p-4">
+<div class="flex flex-wrap gap-2 mb-4">
+
+  <button onclick="saveCase()">
+    💾 Save
+  </button>
+
+  <button onclick="exportCSV()">
+    📊 Export CSV
+  </button>
+
+  <button onclick="shareCase()">
+    📤 Share
+  </button>
+
+  <button onclick="printCase()">
+    🖨 Print
+  </button>
+
+</div>
 
 <!-- =========================================
 DASHBOARD SUMMARY
@@ -1894,8 +1913,135 @@ function updateSummary(){
   }
 
 }
+      function saveCase(){
+
+  const data = {
+
+    patient:
+      document.getElementById('patient-name')?.value || '',
+
+    mrn:
+      document.getElementById('mrn')?.value || '',
+
+    diagnosis:
+      document.getElementById('diagnosis')?.value || '',
+
+    neReduction:
+      document.getElementById('ne-reduction-72h')?.value || '',
+
+    lactateClearance:
+      document.getElementById('lactate-clearance')?.value || '',
+
+    cost72:
+      document.getElementById('summary-cost-72h')?.value || '',
+
+    totalCost:
+      document.getElementById('summary-cost-total')?.value || ''
+
+  };
+
+  localStorage.setItem(
+    'vasopressin-dashboard',
+    JSON.stringify(data)
+  );
+
+  alert('Case saved');
+
+}
+
+function exportCSV(){
+
+  let csv = '';
+
+  csv += 'Patient Name,' +
+    (document.getElementById('patient-name')?.value || '')
+    + '\n';
+
+  csv += 'MRN,' +
+    (document.getElementById('mrn')?.value || '')
+    + '\n';
+
+  csv += 'Diagnosis,' +
+    (document.getElementById('diagnosis')?.value || '')
+    + '\n';
+
+  csv += 'NE Reduction 72h (%),' +
+    (document.getElementById('ne-reduction-72h')?.value || '')
+    + '\n';
+
+  csv += 'Lactate Clearance (%),' +
+    (document.getElementById('lactate-clearance')?.value || '')
+    + '\n';
+
+  csv += 'Cost First 72h,' +
+    (document.getElementById('summary-cost-72h')?.value || '')
+    + '\n';
+
+  csv += 'Total Cost,' +
+    (document.getElementById('summary-cost-total')?.value || '')
+    + '\n';
+
+  const blob =
+    new Blob(
+      [csv],
+      { type: 'text/csv' }
+    );
+
+  const link =
+    document.createElement('a');
+
+  link.href =
+    URL.createObjectURL(blob);
+
+  link.download =
+    'vasopressin_case.csv';
+
+  link.click();
+
+}
 
       
+      function shareCase(){
+
+  const text =
+
+`NE Reduction:
+${document.getElementById('ne-reduction-72h')?.value || '--'} %
+
+Lactate Clearance:
+${document.getElementById('lactate-clearance')?.value || '--'} %
+
+Cost 72h:
+RM ${document.getElementById('summary-cost-72h')?.value || '--'}
+
+Total Cost:
+RM ${document.getElementById('summary-cost-total')?.value || '--'}
+`;
+
+  if(navigator.share){
+
+    navigator.share({
+      title:
+        'Vasopressin Dashboard',
+      text:
+        text
+    });
+
+  } else {
+
+    navigator.clipboard.writeText(text);
+
+    alert('Copied to clipboard');
+
+  }
+
+}
+function printCase(){
+
+  window.print();
+
+}
+
 document.addEventListener('input', () => {
 
   calculateNEReduction();
