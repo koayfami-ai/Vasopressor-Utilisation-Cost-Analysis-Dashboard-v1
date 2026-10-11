@@ -301,30 +301,41 @@ CARD 1 : PATIENT & VASOPRESSIN INDICATION
       Reason Vasopressin Started
 
     </h3>
+<div class="space-y-4">
 
-    <div class="space-y-3 text-sm">
+  <label class="flex items-center gap-4 text-slate-100">
 
-      <label class="flex items-center gap-3">
-        <input type="checkbox" id="vp-ne025">
-        NE > 0.25 mcg/kg/min
-      </label>
+    <input type="checkbox" id="vp-ne025">
 
-      <label class="flex items-center gap-3">
-        <input type="checkbox" id="vp-rv">
-        RV Dysfunction
-      </label>
+    <span>NE > 0.25 mcg/kg/min</span>
 
-      <label class="flex items-center gap-3">
-        <input type="checkbox" id="vp-vasoplegia">
-        Vasoplegic Shock
-      </label>
+  </label>
 
-      <label class="flex items-center gap-3">
-        <input type="checkbox" id="vp-other">
-        Other
-      </label>
+  <label class="flex items-center gap-4 text-slate-100">
 
-    </div>
+    <input type="checkbox" id="vp-rv">
+
+    <span>RV Dysfunction</span>
+
+  </label>
+
+  <label class="flex items-center gap-4 text-slate-100">
+
+    <span><input type="checkbox" id="vp-vasoplegia"></span>
+
+    <span>Vasoplegic Shock</span>
+
+  </label>
+
+  <label class="flex items-center gap-4 text-slate-100">
+
+    <input type="checkbox" id="vp-other">
+
+    <span>Other</span>
+
+  </label>
+
+</div>
 
     <textarea
       id="vp-other-text"
