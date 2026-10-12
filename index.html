@@ -1774,12 +1774,16 @@ function calculateCost(){
       document.getElementById('ne-syringe-24')?.value
     ) || 0;
 
+  const neDayCost =
+    ne24 * 21.91;
+
   document.getElementById(
     'ne-cost-day'
   ).value =
-    ne24;
+    neDayCost.toFixed(2);
 
 }
+
 
    
 
