@@ -189,22 +189,7 @@ DASHBOARD SUMMARY
 
     </div>
 
-    <div class="bg-slate-900 border border-slate-700 rounded-lg p-3">
-
-      <div class="text-xs text-slate-400">
-        Cost 72h
-      </div>
-
-      <div
-        id="summary-cost72"
-        class="text-xl font-bold text-yellow-400">
-
-        --
-
-      </div>
-
-    </div>
-
+    
     <div class="bg-slate-900 border border-slate-700 rounded-lg p-3">
 
       <div class="text-xs text-slate-400">
@@ -1613,8 +1598,6 @@ function calculateNEReduction(){
   const dose24 =
     parseFloat(document.getElementById('ne-24h')?.value) || 0;
 
-  const dose48 =
-    parseFloat(document.getElementById('ne-48h')?.value) || 0;
 
   const dose72 =
     parseFloat(document.getElementById('ne-72h')?.value) || 0;
@@ -1633,9 +1616,6 @@ function calculateNEReduction(){
       document.getElementById('ne-reduction-24h').value =
         (((before - dose24)/before)*100).toFixed(1);
 
-    if(dose48 > 0)
-      document.getElementById('ne-reduction-48h').value =
-        (((before - dose48)/before)*100).toFixed(1);
 
     if(dose72 > 0)
       document.getElementById('ne-reduction-72h').value =
@@ -1828,23 +1808,7 @@ function calculateCost(){
   ).value =
     vpDay.toFixed(2);
 
-  document.getElementById(
-    'summary-cost-72h'
-  ).value =
-    (ne72Cost + vp72Cost).toFixed(2);
-
-  document.getElementById(
-    'summary-cost-total'
-  ).value =
-    (neTotalCost + vpTotalCost).toFixed(2);
-
 }
-
-
-
-  
-
-
 
 
 
