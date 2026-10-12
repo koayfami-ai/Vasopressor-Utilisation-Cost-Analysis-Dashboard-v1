@@ -464,6 +464,18 @@ class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-whi
   <hr class="my-4 border-slate-700">
 
   <div class="grid grid-cols-2 gap-2 mt-3">
+<div>
+
+  <label class="block text-xs text-slate-300 mb-1">
+    NE Syringes Used (24h)
+  </label>
+
+  <input
+    id="ne-syringe-24"
+    type="number"
+    class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+</div>
 
     <div>
       <label class="block text-xs text-slate-300 mb-1">
@@ -604,6 +616,18 @@ class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-whi
     <hr class="my-4 border-slate-700">
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+<div>
+
+  <label class="block text-xs text-slate-300 mb-1">
+    VP Syringes Used (24h)
+  </label>
+
+  <input
+    id="vp-syringe-24"
+    type="number"
+    class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+</div>
 
       <div>
         <label>Syringes First 72h</label>
@@ -1305,62 +1329,7 @@ CARD 5 : ORGAN SUPPORT
   </div>
 
 </div>
-
-        
-<!-- =========================================
-CARD 6 : COST ANALYSIS
-========================================= -->
-
-<div class="bg-slate-800 rounded-xl border border-slate-700 p-5 shadow-lg">
-
-  <h2 class="text-base font-bold text-emerald-400 border-b border-slate-700 pb-2 mb-4">
-
-    💰 Cost Analysis
-
-  </h2>
-
-  <div class="bg-slate-900 border border-slate-700 rounded-lg p-4">
-
-    <h3 class="font-bold text-emerald-300 mb-3">
-      Daily Cost
-    </h3>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-
-      <div>
-
-        <label class="block text-xs text-slate-300 mb-1">
-          NE Cost / Day (RM)
-        </label>
-
-        <input
-          id="summary-ne-cost-day"
-          readonly
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
-      </div>
-
-      <div>
-
-        <label class="block text-xs text-slate-300 mb-1">
-          VP Cost / Day (RM)
-        </label>
-
-        <input
-          id="summary-vp-cost-day"
-          readonly
-          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
-      </div>
-
       
-    </div>
-
-  </div>
-
-    </div>
-
-  </div>
 <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
 
   <h3 class="font-bold text-emerald-300 mb-3">
@@ -1371,59 +1340,60 @@ CARD 6 : COST ANALYSIS
 
   <div class="grid grid-cols-1 gap-3">
 
-    <div>
-
-      <label class="block text-xs text-slate-300 mb-1">
-        Actual VP + Reduced NE Cost (24h)
-      </label>
-
       <input
-        id="actual-cost-24h"
-        readonly
-        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+        e-800 border border-slate-700 rounded-lg px-3 py-2">
 
     </div>
 
-    <div>
+<div>
 
-      <label class="block text-xs text-slate-300 mb-1">
-        Estimated NE Only Cost (24h)
-      </label>
+  <label class="block text-xs text-slate-300 mb-1">
+    Actual Cost 24h (VP + Reduced NE)
+  </label>
 
-      <input
-        id="theoretical-ne-cost"
-        readonly
-        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+  <input
+    id="actual-cost-24h"
+    readonly
+    class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
-    </div>
+</div>
 
-    <div>
+<div>
 
-      <label class="block text-xs text-slate-300 mb-1">
-        Cost Difference (RM)
-      </label>
+  <label class="block text-xs text-slate-300 mb-1">
+    Theoretical NE Only Cost
+  </label>
 
-      <input
-        id="cost-difference"
-        readonly
-        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+  <input
+    id="theoretical-ne-cost"
+    readonly
+    class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
-    </div>
+</div>
 
-    <div>
+<div>
 
-      <label class="block text-xs text-slate-300 mb-1">
-        Savings (%)
-      </label>
+  <label class="block text-xs text-slate-300 mb-1">
+    Difference (RM)
+  </label>
 
-      <input
-        id="cost-savings"
-        readonly
-        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+  <input
+    id="cost-difference"
+    readonly
+    class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
-    </div>
+</div>
 
-  </div>
+<div>
+
+  <label class="block text-xs text-slate-300 mb-1">
+    Savings (%)
+  </label>
+
+  <input
+    id="cost-savings"
+    readonly
+    class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
 
 </div>
 
@@ -1769,7 +1739,7 @@ function calculateLactateClearance(){
   }
 
 }
-      
+
    
 
 function calculateCost(){
@@ -1815,11 +1785,22 @@ function calculateCost(){
   const vpTotalCost =
     vpTotal * vpCostPerSyringe;
 
-  const neDay =
-    ne72Cost / 3;
+      const ne24 =
+  parseFloat(
+    document.getElementById('ne-syringe-24')?.value
+  ) || 0;
 
-  const vpDay =
-    vp72Cost / 3;
+const vp24 =
+  parseFloat(
+    document.getElementById('vp-syringe-24')?.value
+  ) || 0;
+
+const neDay =
+  ne24 * 21.91;
+
+const vpDay =
+  vp24 * 18.68;
+
 
   //
   // NORAD FIELDS
@@ -1858,6 +1839,7 @@ function calculateCost(){
     'vp-cost-total'
   ).value =
     vpTotalCost.toFixed(2);
+      
 function calculateCostImpact(){
 
   const neCostPerSyringe = 21.91;
@@ -1868,45 +1850,53 @@ function calculateCostImpact(){
       document.getElementById('ne-before-vp')?.value
     ) || 0;
 
-  const ne24 =
+  const ne24Dose =
     parseFloat(
       document.getElementById('ne-24h')?.value
     ) || 0;
 
-  const ne72 =
+  const ne24Syringes =
     parseFloat(
-      document.getElementById('ne-syringe-72')?.value
+      document.getElementById('ne-syringe-24')?.value
     ) || 0;
 
-  const vp72 =
+  const vp24Syringes =
     parseFloat(
-      document.getElementById('vp-syringe-72')?.value
+      document.getElementById('vp-syringe-24')?.value
     ) || 0;
 
-  const neDay =
-    (ne72 * neCostPerSyringe) / 3;
+  // Actual cost
 
-  const vpDay =
-    (vp72 * vpCostPerSyringe) / 3;
+  const neCost24 =
+    ne24Syringes * neCostPerSyringe;
+
+  const vpCost24 =
+    vp24Syringes * vpCostPerSyringe;
 
   const actualCost =
-    neDay + vpDay;
+    neCost24 + vpCost24;
+
+  // Theoretical NE only
 
   let theoreticalCost =
     actualCost;
 
-  if(neBefore > 0 && ne24 > 0){
+  if(neBefore > 0 && ne24Dose > 0){
+
+    const theoreticalNESyringes =
+      ne24Syringes *
+      (neBefore / ne24Dose);
 
     theoreticalCost =
-      actualCost *
-      (neBefore / ne24);
+      theoreticalNESyringes *
+      neCostPerSyringe;
 
   }
 
   const difference =
     theoreticalCost - actualCost;
 
-  const savingPct =
+  const savings =
     theoreticalCost > 0
       ? (difference / theoreticalCost) * 100
       : 0;
@@ -1929,27 +1919,9 @@ function calculateCostImpact(){
   document.getElementById(
     'cost-savings'
   ).value =
-    savingPct.toFixed(1);
+    savings.toFixed(1);
 
 }
-
-  //
-  // COST ANALYSIS CARD
-  //
-
-  document.getElementById(
-    'summary-ne-cost-day'
-  ).value =
-    neDay.toFixed(2);
-
-  document.getElementById(
-    'summary-vp-cost-day'
-  ).value =
-    vpDay.toFixed(2);
-
-}
-
-
 
       
 function updateSummary(){
