@@ -1785,22 +1785,7 @@ function calculateCost(){
       document.getElementById('ne-syringe-total')?.value
     ) || 0;
 
-  const vp24 =
-    parseFloat(
-      document.getElementById('vp-syringe-24')?.value
-    ) || 0;
-
-  const vp72 =
-    parseFloat(
-      document.getElementById('vp-syringe-72')?.value
-    ) || 0;
-
-  const vpTotal =
-    parseFloat(
-      document.getElementById('vp-syringe-total')?.value
-    ) || 0;
-
-  // NORAD
+  // NE cost calculations
 
   const neDayCost =
     ne24 * 21.91;
@@ -1810,19 +1795,6 @@ function calculateCost(){
 
   const neTotalCost =
     neTotal * 21.91;
-
-  // VP
-
-  const vpDayCost =
-    vp24 * 18.68;
-
-  const vp72Cost =
-    vp72 * 18.68;
-
-  const vpTotalCost =
-    vpTotal * 18.68;
-
-  // Fill NE
 
   document.getElementById(
     'ne-cost-day'
@@ -1839,22 +1811,14 @@ function calculateCost(){
   ).value =
     neTotalCost.toFixed(2);
 
-  // Fill VP
+const vp24 =
+  parseFloat(
+    document.getElementById('vp-syringe-24')?.value
+  ) || 0;
 
-  document.getElementById(
-    'vp-cost-day'
-  ).value =
-    vpDayCost.toFixed(2);
+document.getElementById('vp-cost-day').value =
+  (vp24 * 18.68).toFixed(2);
 
-  document.getElementById(
-    'vp-cost-72'
-  ).value =
-    vp72Cost.toFixed(2);
-
-  document.getElementById(
-    'vp-cost-total'
-  ).value =
-    vpTotalCost.toFixed(2);
 
 }
 
