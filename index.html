@@ -1358,7 +1358,7 @@ CARD 5 : ORGAN SUPPORT
 
   <h3 class="font-bold text-emerald-300 mb-3">
 
-    Cost Impact Analysis
+    <!-- Cost Impact Analysis -->
 
   </h3>
 
@@ -1838,8 +1838,8 @@ function calculateLactateClearance(){
 
   // Fill fields
 
-  document.getElementById('ne-cost-day').value =
-    neDayCost.toFixed(2);
+  alert(neDayCost);
+
 
   document.getElementById('vp-cost-day').value =
     vpDayCost.toFixed(2);
@@ -1855,8 +1855,6 @@ function calculateLactateClearance(){
 
   document.getElementById('vp-cost-total').value =
     vpTotalCost.toFixed(2);
-
-}
 
 }
 
