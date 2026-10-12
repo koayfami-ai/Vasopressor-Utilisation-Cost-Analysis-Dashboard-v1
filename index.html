@@ -1,5 +1,7 @@
 
 
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -151,6 +153,7 @@ DASHBOARD SUMMARY
 
     </div>
 
+  </div>
 
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
 
@@ -1834,9 +1837,18 @@ function calculateCost(){
     'summary-cost-total'
   ).value =
     (neTotalCost + vpTotalCost).toFixed(2);
-}
-      }
 
+}
+
+
+
+  
+
+
+
+
+
+      
 function updateSummary(){
 
   const setText = (target, source) => {
@@ -1853,9 +1865,9 @@ function updateSummary(){
         sourceEl.value || '--';
 
     }
-        
+
   };
-      
+
   setText(
     'summary-ne-reduction',
     'ne-reduction-72h'
@@ -2069,7 +2081,11 @@ document.addEventListener('input', () => {
   calculateCost();
 
   updateSummary();
+  
 
+  
+  
+  
 
 });
 
