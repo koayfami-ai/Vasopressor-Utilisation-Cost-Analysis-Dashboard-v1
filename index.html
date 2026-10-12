@@ -188,6 +188,17 @@ DASHBOARD SUMMARY
       </div>
 
     </div>
+<div class="text-xs text-slate-400">
+  Savings (%)
+</div>
+
+<div
+  id="summary-savings"
+  class="text-xl font-bold text-yellow-400">
+
+  --
+
+</div>
 
     
     <div class="bg-slate-900 border border-slate-700 rounded-lg p-3">
@@ -1963,6 +1974,13 @@ function updateSummary(){
     'summary-fio2',
     'highest-fio2'
   );
+      
+document.getElementById(
+  'summary-savings'
+).textContent =
+  document.getElementById(
+    'cost-savings'
+  )?.value || '--';
 
   const survival =
     document.getElementById('alive-discharge');
@@ -2008,8 +2026,9 @@ function updateSummary(){
       `${crtBefore} → ${crt72}`;
 
   }
-
 }
+}
+
       function saveCase(){
 
   const data = {
