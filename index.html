@@ -392,19 +392,12 @@ CARD 2 : VASOPRESSOR & INOTROPE EXPOSURE
   </h3>
 
   <div class="text-xs text-slate-400 mb-3">
-    Standard Preparation: 4 ampoules in 50mL syringe
+    Standard DS Preparation: 2-4 ampoules in 50mL syringe (2mg/2ml or 4mg/4ml strength)
   </div>
 
   <div class="grid grid-cols-2 gap-3">
 
-    <div>
-      <label class="block text-xs text-slate-300 mb-1">
-        Starting Dose
-      </label>
-      <input type="number" id="ne-start">
-    </div>
-
-    <div>
+      <div>
       <label class="block text-xs text-slate-300 mb-1">
         Peak Dose
       </label>
@@ -437,13 +430,6 @@ CARD 2 : VASOPRESSOR & INOTROPE EXPOSURE
         24h After VP
       </label>
       <input type="number" id="ne-24h">
-    </div>
-
-    <div>
-      <label class="block text-xs text-slate-300 mb-1">
-        48h After VP
-      </label>
-      <input type="number" id="ne-48h">
     </div>
 
     <div>
@@ -485,12 +471,9 @@ CARD 2 : VASOPRESSOR & INOTROPE EXPOSURE
   <label class="block text-xs text-slate-300 mb-1">
     Theoretical NE Syringes Required (24h)
   </label>
-
-  <input
-    id="theoretical-ne-syr-24"
-    type="number"
-    class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
-
+  <input 
+      id="theoretical-ne-syr-24"
+    type="number">
 </div>
 
   </div>
@@ -524,13 +507,6 @@ CARD 2 : VASOPRESSOR & INOTROPE EXPOSURE
         Reduction at 24h (%)
       </label>
       <input id="ne-reduction-24h" readonly>
-    </div>
-
-    <div>
-      <label class="block text-xs text-slate-300 mb-1">
-        Reduction at 48h (%)
-      </label>
-      <input id="ne-reduction-48h" readonly>
     </div>
 
     <div>
