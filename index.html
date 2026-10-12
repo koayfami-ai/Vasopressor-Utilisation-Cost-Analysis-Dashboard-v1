@@ -1329,8 +1329,6 @@ CARD 5 : ORGAN SUPPORT
   </div>
 
 </div>
-
----Cost Impact Analysis ---
       
 <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
 
@@ -1815,8 +1813,7 @@ const vpDayCost =
   ).value =
     vpTotalCost.toFixed(2);
       
-const actualCost =
-    neDayCost + vpDayCost
+const actualCost = neDayCost + vpDayCost;
 
 document.getElementById(
     'actual-cost-24h'
@@ -1826,15 +1823,12 @@ document.getElementById(
 const theoreticalCost = 
      theoreticalNESyr * 21.91;
 
-document.getElementById(
-'theoretical-ne-syr-24').value =
+document.getElementById('theoretical-ne-syr-24').value =
 theoreticalNESyr.toFixed(2);
       
 
-document.getElementById(
-    'theoretical-ne-cost'
-  ).value =
-    theoreticalCost.toFixed(2);
+document.getElementById('theoretical-ne-cost'
+  ).value = theoreticalCost.toFixed(2);
 
 const difference =
 theoreticalCost - actualCost;
@@ -1856,7 +1850,7 @@ document.getElementById(
 
 }
 
-   
+      }
 
 function updateSummary(){
 
