@@ -1811,8 +1811,12 @@ function calculateCost(){
   ).value =
     neTotalCost.toFixed(2);
 
-alert("REACHED VP SECTION");
+const vp24 =
+  parseFloat(
+    document.getElementById('vp-syringe-24')?.value
+  ) || 0;
 
+alert("VP=" + vp24);
 
       
 }
