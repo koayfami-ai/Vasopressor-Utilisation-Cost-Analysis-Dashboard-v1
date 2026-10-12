@@ -1774,15 +1774,27 @@ function calculateCost(){
       document.getElementById('ne-syringe-24')?.value
     ) || 0;
 
-  const neDayCost =
-    ne24 * 21.91;
+  const ne72 =
+    parseFloat(
+      document.getElementById('ne-syringe-72')?.value
+    ) || 0;
 
-  document.getElementById(
-    'ne-cost-day'
-  ).value =
-    neDayCost.toFixed(2);
+  const neTotal =
+    parseFloat(
+      document.getElementById('ne-syringe-total')?.value
+    ) || 0;
+
+  document.getElementById('ne-cost-day').value =
+    (ne24 * 21.91).toFixed(2);
+
+  document.getElementById('ne-cost-72').value =
+    (ne72 * 21.91).toFixed(2);
+
+  document.getElementById('ne-cost-total').value =
+    (neTotal * 21.91).toFixed(2);
 
 }
+
 
 
    
