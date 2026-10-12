@@ -1818,40 +1818,40 @@ document.getElementById(
   ).value =
     actualCost.toFixed(2);
 
-const theoreticalCost = 
-     theoreticalNESyr * 21.91;
+const theoreticalNESyr =
+  parseFloat(
+    document.getElementById('theoretical-ne-syr-24')?.value
+  ) || 0;
+
+const theoreticalCost =
+  theoreticalNESyr * 21.91;
 
 document.getElementById(
-'theoretical-ne-syr-24').value =
-theoreticalNESyr.toFixed(2);
-      
-
-document.getElementById(
-    'theoretical-ne-cost'
-  ).value =
-    theoreticalCost.toFixed(2);
+  'theoretical-ne-cost'
+).value =
+  theoreticalCost.toFixed(2);
 
 const difference =
-theoreticalCost - actualCost;
+  theoreticalCost - actualCost;
 
-  const savings =
-    theoreticalCost > 0
-      ? ((difference / theoreticalCost) * 100)
-      : 0;
-      
+const savings =
+  theoreticalCost > 0
+    ? ((difference / theoreticalCost) * 100)
+    : 0;
+
 document.getElementById(
-    'cost-difference'
-  ).value =
-    difference.toFixed(2);
+  'cost-difference'
+).value =
+  difference.toFixed(2);
 
-  document.getElementById(
-    'cost-savings'
-  ).value =
-    savings.toFixed(1);
+document.getElementById(
+  'cost-savings'
+).value =
+  savings.toFixed(1);
 
 }
 
-   
+
 
 function updateSummary(){
 
