@@ -1985,54 +1985,118 @@ function updateSummary(){
 
 function exportCSV(){
 
-  let csv = '';
+  const rows = [
 
-  csv += 'Patient Name,' +
-    (document.getElementById('patient-name')?.value || '')
-    + '\n';
+    ["Patient Name",
+      document.getElementById('patient-name')?.value || ""],
 
-  csv += 'MRN,' +
-    (document.getElementById('mrn')?.value || '')
-    + '\n';
+    ["MRN",
+      document.getElementById('mrn')?.value || ""],
 
-  csv += 'Diagnosis,' +
-    (document.getElementById('diagnosis')?.value || '')
-    + '\n';
+    ["Diagnosis",
+      document.getElementById('diagnosis')?.value || ""],
 
-  csv += 'NE Reduction 72h (%),' +
-    (document.getElementById('ne-reduction-72h')?.value || '')
-    + '\n';
+    ["Target MAP",
+      document.getElementById('target-map')?.value || ""],
 
-  csv += 'Lactate Clearance (%),' +
-    (document.getElementById('lactate-clearance')?.value || '')
-    + '\n';
+    ["Time To Target MAP",
+      document.getElementById('time-target-map')?.value || ""],
 
-  csv += 'Cost First 72h,' +
-    (document.getElementById('summary-cost-72h')?.value || '')
-    + '\n';
+    ["NE Reduction 72h (%)",
+      document.getElementById('ne-reduction-72h')?.value || ""],
 
-  csv += 'Total Cost,' +
-    (document.getElementById('summary-cost-total')?.value || '')
-    + '\n';
+    ["Shock Index Before",
+      document.getElementById('si-before')?.value || ""],
 
-  const blob =
-    new Blob(
-      [csv],
-      { type: 'text/csv' }
-    );
+    ["Shock Index 72h",
+      document.getElementById('si-72h')?.value || ""],
+
+    ["CRT Before",
+      document.getElementById('crt-before')?.value || ""],
+
+    ["CRT 72h",
+      document.getElementById('crt-72h')?.value || ""],
+
+    ["Lactate Clearance (%)",
+      document.getElementById('lactate-clearance')?.value || ""],
+
+    ["NE Cost / Day",
+      document.getElementById('ne-cost-day')?.value || ""],
+
+    ["NE Cost 72h",
+      document.getElementById('ne-cost-72')?.value || ""],
+
+    ["NE Cost Total",
+      document.getElementById('ne-cost-total')?.value || ""],
+
+    ["VP Cost / Day",
+      document.getElementById('vp-cost-day')?.value || ""],
+
+    ["VP Cost 72h",
+      document.getElementById('vp-cost-72')?.value || ""],
+
+    ["VP Cost Total",
+      document.getElementById('vp-cost-total')?.value || ""],
+
+    ["Actual Cost 24h",
+      document.getElementById('actual-cost-24h')?.value || ""],
+
+    ["Theoretical NE Only Cost",
+      document.getElementById('theoretical-ne-cost')?.value || ""],
+
+    ["Difference (RM)",
+      document.getElementById('cost-difference')?.value || ""],
+
+    ["Savings (%)",
+      document.getElementById('cost-savings')?.value || ""],
+
+    ["Highest FiO2",
+      document.getElementById('highest-fio2')?.value || ""],
+
+    ["Ward LOS",
+      document.getElementById('ward-los')?.value || ""],
+
+    ["Alive To Discharge",
+      document.getElementById('alive-discharge')?.value || ""]
+
+  ];
+
+  let csvContent =
+    "data:text/csv;charset=utf-8,";
+
+  rows.forEach(row => {
+
+    csvContent +=
+      row.join(",") + "\n";
+
+  });
+
+  const encodedUri =
+    encodeURI(csvContent);
 
   const link =
-    document.createElement('a');
+    document.createElement("a");
 
-  link.href =
-    URL.createObjectURL(blob);
+  link.setAttribute(
+    "href",
+    encodedUri
+  );
 
-  link.download =
-    'vasopressin_case.csv';
+  link.setAttribute(
+    "download",
+    "vasopressin_case.csv"
+  );
+
+  document.body.appendChild(link);
 
   link.click();
 
+  document.body.removeChild(link);
+
 }
+
+
+      
 
       
       function shareCase(){
