@@ -1383,13 +1383,17 @@ CARD 5 : ORGAN SUPPORT
 <div>
 
   <label class="block text-xs text-slate-300 mb-1">
-    Theoretical NE Only Cost
+    Theoretical NE Syringes Required (24h)
   </label>
 
   <input
-    id="theoretical-ne-cost"
-    readonly
+    id="theoretical-ne-syr-24"
+    type="number"
     class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+</div>
+
+  
 
 </div>
 
@@ -1764,85 +1768,92 @@ function calculateLactateClearance(){
 
    function calculateCostImpact(){
 
+  function calculateCost(){
+
   const neCostPerSyringe = 21.91;
   const vpCostPerSyringe = 18.68;
 
-  const neBefore =
-    parseFloat(
-      document.getElementById('ne-before-vp')?.value
-    ) || 0;
+  // 24h syringe usage
 
-  const ne24Dose =
-    parseFloat(
-      document.getElementById('ne-24h')?.value
-    ) || 0;
-
-  const ne24Syr =
+  const ne24 =
     parseFloat(
       document.getElementById('ne-syringe-24')?.value
     ) || 0;
 
-  const vp24Syr =
+  const vp24 =
     parseFloat(
       document.getElementById('vp-syringe-24')?.value
     ) || 0;
 
-  // Actual Cost
+  // 72h syringe usage
 
-  const actualNECost =
-    ne24Syr * neCostPerSyringe;
+  const ne72 =
+    parseFloat(
+      document.getElementById('ne-syringe-72')?.value
+    ) || 0;
 
-  const actualVPCost =
-    vp24Syr * vpCostPerSyringe;
+  const vp72 =
+    parseFloat(
+      document.getElementById('vp-syringe-72')?.value
+    ) || 0;
 
-  const actualCost =
-    actualNECost + actualVPCost;
+  // Entire stay
 
-  // Theoretical NE Only
+  const neTotal =
+    parseFloat(
+      document.getElementById('ne-syringe-total')?.value
+    ) || 0;
 
-  let theoreticalCost = 0;
+  const vpTotal =
+    parseFloat(
+      document.getElementById('vp-syringe-total')?.value
+    ) || 0;
 
-  if(neBefore > 0 && ne24Dose > 0){
+  // Daily
 
-    const theoreticalNESyr =
-      ne24Syr *
-      (neBefore / ne24Dose);
+  const neDayCost =
+    ne24 * neCostPerSyringe;
 
-    theoreticalCost =
-      theoreticalNESyr *
-      neCostPerSyringe;
+  const vpDayCost =
+    vp24 * vpCostPerSyringe;
 
-  }
+  // 72h
 
-  // Difference
+  const ne72Cost =
+    ne72 * neCostPerSyringe;
 
-  const difference =
-    theoreticalCost - actualCost;
+  const vp72Cost =
+    vp72 * vpCostPerSyringe;
 
-  const savings =
-    theoreticalCost > 0
-      ? ((difference / theoreticalCost) * 100)
-      : 0;
+  // Total
 
-  document.getElementById(
-    'actual-cost-24h'
-  ).value =
-    actualCost.toFixed(2);
+  const neTotalCost =
+    neTotal * neCostPerSyringe;
 
-  document.getElementById(
-    'theoretical-ne-cost'
-  ).value =
-    theoreticalCost.toFixed(2);
+  const vpTotalCost =
+    vpTotal * vpCostPerSyringe;
 
-  document.getElementById(
-    'cost-difference'
-  ).value =
-    difference.toFixed(2);
+  // Fill fields
 
-  document.getElementById(
-    'cost-savings'
-  ).value =
-    savings.toFixed(1);
+  document.getElementById('ne-cost-day').value =
+    neDayCost.toFixed(2);
+
+  document.getElementById('vp-cost-day').value =
+    vpDayCost.toFixed(2);
+
+  document.getElementById('ne-cost-72').value =
+    ne72Cost.toFixed(2);
+
+  document.getElementById('vp-cost-72').value =
+    vp72Cost.toFixed(2);
+
+  document.getElementById('ne-cost-total').value =
+    neTotalCost.toFixed(2);
+
+  document.getElementById('vp-cost-total').value =
+    vpTotalCost.toFixed(2);
+
+}
 
 }
 
