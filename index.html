@@ -1983,7 +1983,8 @@ function updateSummary(){
 
 }
 
-function exportCSV(){
+
+      function exportCSV(){
 
   const rows = [
 
@@ -2038,21 +2039,6 @@ function exportCSV(){
     ["VP Cost Total",
       document.getElementById('vp-cost-total')?.value || ""],
 
-    ["Actual Cost 24h",
-      document.getElementById('actual-cost-24h')?.value || ""],
-
-    ["Theoretical NE Only Cost",
-      document.getElementById('theoretical-ne-cost')?.value || ""],
-
-    ["Difference (RM)",
-      document.getElementById('cost-difference')?.value || ""],
-
-    ["Savings (%)",
-      document.getElementById('cost-savings')?.value || ""],
-
-    ["Highest FiO2",
-      document.getElementById('highest-fio2')?.value || ""],
-
     ["Ward LOS",
       document.getElementById('ward-los')?.value || ""],
 
@@ -2061,42 +2047,35 @@ function exportCSV(){
 
   ];
 
-  let csvContent =
-    "data:text/csv;charset=utf-8,";
+  let csv =
+    "Parameter,Value\n";
 
   rows.forEach(row => {
 
-    csvContent +=
-      row.join(",") + "\n";
+    csv +=
+      `"${row[0]}","${row[1]}"\n`;
 
   });
 
-  const encodedUri =
-    encodeURI(csvContent);
+  const blob =
+    new Blob(
+      [csv],
+      { type: 'text/csv;charset=utf-8;' }
+    );
 
   const link =
-    document.createElement("a");
+    document.createElement('a');
 
-  link.setAttribute(
-    "href",
-    encodedUri
-  );
+  link.href =
+    URL.createObjectURL(blob);
 
-  link.setAttribute(
-    "download",
-    "vasopressin_case.csv"
-  );
-
-  document.body.appendChild(link);
+  link.download =
+    'vasopressin_case.csv';
 
   link.click();
 
-  document.body.removeChild(link);
-
 }
 
-
-      
 
       
       function shareCase(){
@@ -2136,9 +2115,13 @@ RM ${document.getElementById('summary-cost-total')?.value || '--'}
 }
 function printCase(){
 
-  window.print();
+  window.open(
+    window.location.href,
+    '_blank'
+  );
 
 }
+
 
 document.addEventListener('input', () => {
 
