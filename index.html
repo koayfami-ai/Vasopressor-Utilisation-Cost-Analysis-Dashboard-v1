@@ -1810,16 +1810,18 @@ function calculateCost(){
     'ne-cost-total'
   ).value =
     neTotalCost.toFixed(2);
-
-alert(
-  document.getElementById('vp-cost-day')
-);
-
-
       
-}
+const vp24 =
+  parseFloat(
+    document.getElementById('vp-syringe-24')?.value
+  ) || 0;
 
+document.getElementById(
+  'vp-cost-day'
+).value =
+  vp24;
 
+      }
 
    
 
