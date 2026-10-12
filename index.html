@@ -1361,6 +1361,71 @@ CARD 6 : COST ANALYSIS
     </div>
 
   </div>
+<div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
+
+  <h3 class="font-bold text-emerald-300 mb-3">
+
+    Cost Impact Analysis
+
+  </h3>
+
+  <div class="grid grid-cols-1 gap-3">
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Actual VP + Reduced NE Cost (24h)
+      </label>
+
+      <input
+        id="actual-cost-24h"
+        readonly
+        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+    </div>
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Estimated NE Only Cost (24h)
+      </label>
+
+      <input
+        id="theoretical-ne-cost"
+        readonly
+        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+    </div>
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Cost Difference (RM)
+      </label>
+
+      <input
+        id="cost-difference"
+        readonly
+        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+    </div>
+
+    <div>
+
+      <label class="block text-xs text-slate-300 mb-1">
+        Savings (%)
+      </label>
+
+      <input
+        id="cost-savings"
+        readonly
+        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+
+    </div>
+
+  </div>
+
+</div>
 
   <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 mt-4">
 
@@ -1793,6 +1858,80 @@ function calculateCost(){
     'vp-cost-total'
   ).value =
     vpTotalCost.toFixed(2);
+function calculateCostImpact(){
+
+  const neCostPerSyringe = 21.91;
+  const vpCostPerSyringe = 18.68;
+
+  const neBefore =
+    parseFloat(
+      document.getElementById('ne-before-vp')?.value
+    ) || 0;
+
+  const ne24 =
+    parseFloat(
+      document.getElementById('ne-24h')?.value
+    ) || 0;
+
+  const ne72 =
+    parseFloat(
+      document.getElementById('ne-syringe-72')?.value
+    ) || 0;
+
+  const vp72 =
+    parseFloat(
+      document.getElementById('vp-syringe-72')?.value
+    ) || 0;
+
+  const neDay =
+    (ne72 * neCostPerSyringe) / 3;
+
+  const vpDay =
+    (vp72 * vpCostPerSyringe) / 3;
+
+  const actualCost =
+    neDay + vpDay;
+
+  let theoreticalCost =
+    actualCost;
+
+  if(neBefore > 0 && ne24 > 0){
+
+    theoreticalCost =
+      actualCost *
+      (neBefore / ne24);
+
+  }
+
+  const difference =
+    theoreticalCost - actualCost;
+
+  const savingPct =
+    theoreticalCost > 0
+      ? (difference / theoreticalCost) * 100
+      : 0;
+
+  document.getElementById(
+    'actual-cost-24h'
+  ).value =
+    actualCost.toFixed(2);
+
+  document.getElementById(
+    'theoretical-ne-cost'
+  ).value =
+    theoreticalCost.toFixed(2);
+
+  document.getElementById(
+    'cost-difference'
+  ).value =
+    difference.toFixed(2);
+
+  document.getElementById(
+    'cost-savings'
+  ).value =
+    savingPct.toFixed(1);
+
+}
 
   //
   // COST ANALYSIS CARD
@@ -2040,13 +2179,10 @@ document.addEventListener('input', () => {
 
   calculateCost();
 
+      calculateCostImpact();
+
   updateSummary();
   
-
-  
-  
-  
-
 });
 
      calculateNEReduction();
@@ -2058,6 +2194,8 @@ document.addEventListener('input', () => {
   calculateLactateClearance();
 
   calculateCost();
+      
+      calculateCostImpact();
 
   updateSummary();
   
