@@ -2120,13 +2120,11 @@ ${document.getElementById('alive-discharge')?.value || ''}
   }
 
 }
-function exportPDF(){
+
+  function exportPDF(){
 
   const report = `
-
 VASOPRESSIN UTILISATION & COST ANALYSIS
-
-PATIENT DETAILS
 
 Patient Name:
 ${document.getElementById('patient-name')?.value || ''}
@@ -2137,32 +2135,11 @@ ${document.getElementById('mrn')?.value || ''}
 Diagnosis:
 ${document.getElementById('diagnosis')?.value || ''}
 
-==================================
-
-INDICATIONS
-
-NE > 0.25:
-${document.getElementById('vp-ne025')?.checked ? 'Yes' : 'No'}
-
-RV Dysfunction:
-${document.getElementById('vp-rv')?.checked ? 'Yes' : 'No'}
-
-Vasoplegic Shock:
-${document.getElementById('vp-vasoplegia')?.checked ? 'Yes' : 'No'}
-
-==================================
-
-TARGETS
-
 Target MAP:
 ${document.getElementById('target-map')?.value || ''}
 
 Time To Target MAP:
 ${document.getElementById('time-target-map')?.value || ''}
-
-==================================
-
-HAEMODYNAMICS
 
 NE Reduction 24h:
 ${document.getElementById('ne-reduction-24h')?.value || ''}
@@ -2170,102 +2147,75 @@ ${document.getElementById('ne-reduction-24h')?.value || ''}
 NE Reduction 72h:
 ${document.getElementById('ne-reduction-72h')?.value || ''}
 
-Shock Index:
-${document.getElementById('si-before')?.value || ''} → ${document.getElementById('si-72h')?.value || ''}
-
-==================================
-
-PERFUSION
-
 CRT:
-${document.getElementById('crt-before')?.value || ''} → ${document.getElementById('crt-72h')?.value || ''}
+${document.getElementById('crt-before')?.value || ''} →
+${document.getElementById('crt-72h')?.value || ''}
+
+Shock Index:
+${document.getElementById('si-before')?.value || ''} →
+${document.getElementById('si-72h')?.value || ''}
 
 Lactate Clearance:
 ${document.getElementById('lactate-clearance')?.value || ''}
 
-==================================
-
-COSTS
-
-NE Cost / Day:
-RM ${document.getElementById('ne-cost-day')?.value || ''}
-
-NE Cost 72h:
-RM ${document.getElementById('ne-cost-72')?.value || ''}
-
-NE Cost Total:
-RM ${document.getElementById('ne-cost-total')?.value || ''}
-
-VP Cost / Day:
-RM ${document.getElementById('vp-cost-day')?.value || ''}
-
-VP Cost 72h:
-RM ${document.getElementById('vp-cost-72')?.value || ''}
-
-VP Cost Total:
-RM ${document.getElementById('vp-cost-total')?.value || ''}
-
-Actual Cost 24h:
-RM ${document.getElementById('actual-cost-24h')?.value || ''}
-
-Theoretical NE Cost:
-RM ${document.getElementById('theoretical-ne-cost')?.value || ''}
-
-Difference:
-RM ${document.getElementById('cost-difference')?.value || ''}
-
-Savings:
-${document.getElementById('cost-savings')?.value || ''} %
-
-==================================
-
-RESPIRATORY SUPPORT
-
 Highest FiO₂:
 ${document.getElementById('highest-fio2')?.value || ''}
 
-==================================
+NE Cost Day:
+${document.getElementById('ne-cost-day')?.value || ''}
 
-OUTCOME
+NE Cost 72h:
+${document.getElementById('ne-cost-72')?.value || ''}
+
+NE Cost Total:
+${document.getElementById('ne-cost-total')?.value || ''}
+
+VP Cost Day:
+${document.getElementById('vp-cost-day')?.value || ''}
+
+VP Cost 72h:
+${document.getElementById('vp-cost-72')?.value || ''}
+
+VP Cost Total:
+${document.getElementById('vp-cost-total')?.value || ''}
+
+Actual Cost 24h:
+${document.getElementById('actual-cost-24h')?.value || ''}
+
+Theoretical NE Cost:
+${document.getElementById('theoretical-ne-cost')?.value || ''}
+
+Difference:
+${document.getElementById('cost-difference')?.value || ''}
+
+Savings:
+${document.getElementById('cost-savings')?.value || ''}
 
 Ward LOS:
 ${document.getElementById('ward-los')?.value || ''}
 
 Alive To Discharge:
 ${document.getElementById('alive-discharge')?.value || ''}
-
-Comments:
-${document.getElementById('outcome-comments')?.value || ''}
-
 `;
 
-  const win =
-    window.open('', '_blank');
+  const blob = new Blob(
+    [report],
+    { type: 'text/plain' }
+  );
 
-  win.document.write(`
-    <html>
-    <head>
-      <title>Vasopressin Audit Report</title>
-      <style>
-      body{
-        font-family:Arial;
-        padding:20px;
-        white-space:pre-wrap;
-      }
-      </style>
-    </head>
-    <body>${report}</body>
-    </html>
-  `);
+  const link =
+    document.createElement('a');
 
-  win.document.close();
+  link.href =
+    URL.createObjectURL(blob);
 
-  win.print();
+  link.download =
+    'vasopressin_report.txt';
+
+  link.click();
 
 }
 
-
-  
 
 
 document.addEventListener('input', () => {
