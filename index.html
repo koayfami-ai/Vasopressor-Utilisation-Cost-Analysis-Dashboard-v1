@@ -48,22 +48,35 @@ textarea{
 </head>
 
 <body class="bg-slate-900 text-slate-100 p-4">
-<div class="flex flex-wrap gap-2 mb-4">
 
-  <button onclick="saveCase()">
+  <div class="flex flex-wrap gap-2 mb-4">
+
+  <button
+    type="button"
+    onclick="saveCase()"
+    class="bg-emerald-600 text-white px-3 py-2 rounded-lg">
     💾 Save
   </button>
 
-  <button onclick="exportCSV()">
+  <button
+    type="button"
+    onclick="exportCSV()"
+    class="bg-sky-600 text-white px-3 py-2 rounded-lg">
     📊 Export CSV
   </button>
 
-  <button onclick="shareCase()">
-    📤 Share
+  <button
+    type="button"
+    onclick="exportPDF()"
+    class="bg-rose-600 text-white px-3 py-2 rounded-lg">
+    📄 Export PDF
   </button>
 
-  <button onclick="printCase()">
-    🖨 Print
+  <button
+    type="button"
+    onclick="shareCase()"
+    class="bg-amber-600 text-white px-3 py-2 rounded-lg">
+    📤 Share
   </button>
 
 </div>
@@ -1899,116 +1912,101 @@ function updateSummary(){
   }
 }
 
+function saveCase(){
 
-      function saveCase(){
+  const caseData = {
 
-  const data = {
-
-    patient:
-      document.getElementById('patient-name')?.value || '',
+    patientName:
+      document.getElementById('patient-name')?.value || "",
 
     mrn:
-      document.getElementById('mrn')?.value || '',
+      document.getElementById('mrn')?.value || "",
 
     diagnosis:
-      document.getElementById('diagnosis')?.value || '',
-
-    neReduction:
-      document.getElementById('ne-reduction-72h')?.value || '',
-
-    lactateClearance:
-      document.getElementById('lactate-clearance')?.value || '',
-
-    cost72:
-      document.getElementById('summary-cost-72h')?.value || '',
-
-    totalCost:
-      document.getElementById('summary-cost-total')?.value || ''
+      document.getElementById('diagnosis')?.value || ""
 
   };
 
   localStorage.setItem(
-    'vasopressin-dashboard',
-    JSON.stringify(data)
+    'vasopressin_case',
+    JSON.stringify(caseData)
   );
 
-  alert('Case saved');
+  alert("Case Saved");
 
 }
 
-
       function exportCSV(){
 
-  const rows = [
+  const headers = [
+    "Patient Name",
+    "MRN",
+    "Diagnosis",
+    "Target MAP",
+    "NE Reduction 24h",
+    "NE Reduction 72h",
+    "Shock Index Before",
+    "Shock Index 72h",
+    "CRT Before",
+    "CRT 72h",
+    "Lactate Clearance",
+    "NE Cost Day",
+    "NE Cost 72h",
+    "NE Cost Total",
+    "VP Cost Day",
+    "VP Cost 72h",
+    "VP Cost Total",
+    "Actual Cost 24h",
+    "Theoretical NE Cost",
+    "Difference",
+    "Savings %",
+    "Highest FiO2",
+    "Ward LOS",
+    "Alive To Discharge"
+  ];
 
-    ["Patient Name",
-      document.getElementById('patient-name')?.value || ""],
+  const values = [
 
-    ["MRN",
-      document.getElementById('mrn')?.value || ""],
+    document.getElementById('patient-name')?.value || "",
+    document.getElementById('mrn')?.value || "",
+    document.getElementById('diagnosis')?.value || "",
+    document.getElementById('target-map')?.value || "",
 
-    ["Diagnosis",
-      document.getElementById('diagnosis')?.value || ""],
+    document.getElementById('ne-reduction-24h')?.value || "",
+    document.getElementById('ne-reduction-72h')?.value || "",
 
-    ["Target MAP",
-      document.getElementById('target-map')?.value || ""],
+    document.getElementById('si-before')?.value || "",
+    document.getElementById('si-72h')?.value || "",
 
-    ["Time To Target MAP",
-      document.getElementById('time-target-map')?.value || ""],
+    document.getElementById('crt-before')?.value || "",
+    document.getElementById('crt-72h')?.value || "",
 
-    ["NE Reduction 72h (%)",
-      document.getElementById('ne-reduction-72h')?.value || ""],
+    document.getElementById('lactate-clearance')?.value || "",
 
-    ["Shock Index Before",
-      document.getElementById('si-before')?.value || ""],
+    document.getElementById('ne-cost-day')?.value || "",
+    document.getElementById('ne-cost-72')?.value || "",
+    document.getElementById('ne-cost-total')?.value || "",
 
-    ["Shock Index 72h",
-      document.getElementById('si-72h')?.value || ""],
+    document.getElementById('vp-cost-day')?.value || "",
+    document.getElementById('vp-cost-72')?.value || "",
+    document.getElementById('vp-cost-total')?.value || "",
 
-    ["CRT Before",
-      document.getElementById('crt-before')?.value || ""],
+    document.getElementById('actual-cost-24h')?.value || "",
+    document.getElementById('theoretical-ne-cost')?.value || "",
+    document.getElementById('cost-difference')?.value || "",
+    document.getElementById('cost-savings')?.value || "",
 
-    ["CRT 72h",
-      document.getElementById('crt-72h')?.value || ""],
+    document.getElementById('highest-fio2')?.value || "",
 
-    ["Lactate Clearance (%)",
-      document.getElementById('lactate-clearance')?.value || ""],
+    document.getElementById('ward-los')?.value || "",
 
-    ["NE Cost / Day",
-      document.getElementById('ne-cost-day')?.value || ""],
-
-    ["NE Cost 72h",
-      document.getElementById('ne-cost-72')?.value || ""],
-
-    ["NE Cost Total",
-      document.getElementById('ne-cost-total')?.value || ""],
-
-    ["VP Cost / Day",
-      document.getElementById('vp-cost-day')?.value || ""],
-
-    ["VP Cost 72h",
-      document.getElementById('vp-cost-72')?.value || ""],
-
-    ["VP Cost Total",
-      document.getElementById('vp-cost-total')?.value || ""],
-
-    ["Ward LOS",
-      document.getElementById('ward-los')?.value || ""],
-
-    ["Alive To Discharge",
-      document.getElementById('alive-discharge')?.value || ""]
+    document.getElementById('alive-discharge')?.value || ""
 
   ];
 
-  let csv =
-    "Parameter,Value\n";
-
-  rows.forEach(row => {
-
-    csv +=
-      `"${row[0]}","${row[1]}"\n`;
-
-  });
+  const csv =
+    headers.join(",") + "\n" +
+    values.join(",");
 
   const blob =
     new Blob(
@@ -2030,50 +2028,228 @@ function updateSummary(){
 }
 
 
-      
+
       function shareCase(){
 
-  const text =
+  const report = `
 
-`NE Reduction:
-${document.getElementById('ne-reduction-72h')?.value || '--'} %
+VASOPRESSIN UTILISATION AUDIT
+
+Patient:
+${document.getElementById('patient-name')?.value || ''}
+
+MRN:
+${document.getElementById('mrn')?.value || ''}
+
+Diagnosis:
+${document.getElementById('diagnosis')?.value || ''}
+
+Target MAP:
+${document.getElementById('target-map')?.value || ''}
+
+NE Reduction 24h:
+${document.getElementById('ne-reduction-24h')?.value || ''} %
+
+NE Reduction 72h:
+${document.getElementById('ne-reduction-72h')?.value || ''} %
+
+Shock Index:
+${document.getElementById('si-before')?.value || ''} → ${document.getElementById('si-72h')?.value || ''}
+
+CRT:
+${document.getElementById('crt-before')?.value || ''} → ${document.getElementById('crt-72h')?.value || ''}
 
 Lactate Clearance:
-${document.getElementById('lactate-clearance')?.value || '--'} %
+${document.getElementById('lactate-clearance')?.value || ''} %
 
-Cost 72h:
-RM ${document.getElementById('summary-cost-72h')?.value || '--'}
+NE Cost Day:
+RM ${document.getElementById('ne-cost-day')?.value || ''}
 
-Total Cost:
-RM ${document.getElementById('summary-cost-total')?.value || '--'}
+VP Cost Day:
+RM ${document.getElementById('vp-cost-day')?.value || ''}
+
+Actual Cost 24h:
+RM ${document.getElementById('actual-cost-24h')?.value || ''}
+
+Theoretical NE Cost:
+RM ${document.getElementById('theoretical-ne-cost')?.value || ''}
+
+Savings:
+${document.getElementById('cost-savings')?.value || ''} %
+
+Highest FiO₂:
+${document.getElementById('highest-fio2')?.value || ''}
+
+Ward LOS:
+${document.getElementById('ward-los')?.value || ''}
+
+Alive To Discharge:
+${document.getElementById('alive-discharge')?.value || ''}
+
 `;
 
   if(navigator.share){
 
     navigator.share({
-      title:
-        'Vasopressin Dashboard',
-      text:
-        text
+      title: 'Vasopressin Audit',
+      text: report
     });
 
   } else {
 
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(report);
 
-    alert('Copied to clipboard');
+    alert("Copied to clipboard");
 
   }
 
 }
-function printCase(){
+function exportPDF(){
 
-  window.open(
-    window.location.href,
-    '_blank'
-  );
+  const report = `
+
+VASOPRESSIN UTILISATION & COST ANALYSIS
+
+PATIENT DETAILS
+
+Patient Name:
+${document.getElementById('patient-name')?.value || ''}
+
+MRN:
+${document.getElementById('mrn')?.value || ''}
+
+Diagnosis:
+${document.getElementById('diagnosis')?.value || ''}
+
+==================================
+
+INDICATIONS
+
+NE > 0.25:
+${document.getElementById('vp-ne025')?.checked ? 'Yes' : 'No'}
+
+RV Dysfunction:
+${document.getElementById('vp-rv')?.checked ? 'Yes' : 'No'}
+
+Vasoplegic Shock:
+${document.getElementById('vp-vasoplegia')?.checked ? 'Yes' : 'No'}
+
+==================================
+
+TARGETS
+
+Target MAP:
+${document.getElementById('target-map')?.value || ''}
+
+Time To Target MAP:
+${document.getElementById('time-target-map')?.value || ''}
+
+==================================
+
+HAEMODYNAMICS
+
+NE Reduction 24h:
+${document.getElementById('ne-reduction-24h')?.value || ''}
+
+NE Reduction 72h:
+${document.getElementById('ne-reduction-72h')?.value || ''}
+
+Shock Index:
+${document.getElementById('si-before')?.value || ''} → ${document.getElementById('si-72h')?.value || ''}
+
+==================================
+
+PERFUSION
+
+CRT:
+${document.getElementById('crt-before')?.value || ''} → ${document.getElementById('crt-72h')?.value || ''}
+
+Lactate Clearance:
+${document.getElementById('lactate-clearance')?.value || ''}
+
+==================================
+
+COSTS
+
+NE Cost / Day:
+RM ${document.getElementById('ne-cost-day')?.value || ''}
+
+NE Cost 72h:
+RM ${document.getElementById('ne-cost-72')?.value || ''}
+
+NE Cost Total:
+RM ${document.getElementById('ne-cost-total')?.value || ''}
+
+VP Cost / Day:
+RM ${document.getElementById('vp-cost-day')?.value || ''}
+
+VP Cost 72h:
+RM ${document.getElementById('vp-cost-72')?.value || ''}
+
+VP Cost Total:
+RM ${document.getElementById('vp-cost-total')?.value || ''}
+
+Actual Cost 24h:
+RM ${document.getElementById('actual-cost-24h')?.value || ''}
+
+Theoretical NE Cost:
+RM ${document.getElementById('theoretical-ne-cost')?.value || ''}
+
+Difference:
+RM ${document.getElementById('cost-difference')?.value || ''}
+
+Savings:
+${document.getElementById('cost-savings')?.value || ''} %
+
+==================================
+
+RESPIRATORY SUPPORT
+
+Highest FiO₂:
+${document.getElementById('highest-fio2')?.value || ''}
+
+==================================
+
+OUTCOME
+
+Ward LOS:
+${document.getElementById('ward-los')?.value || ''}
+
+Alive To Discharge:
+${document.getElementById('alive-discharge')?.value || ''}
+
+Comments:
+${document.getElementById('outcome-comments')?.value || ''}
+
+`;
+
+  const win =
+    window.open('', '_blank');
+
+  win.document.write(`
+    <html>
+    <head>
+      <title>Vasopressin Audit Report</title>
+      <style>
+      body{
+        font-family:Arial;
+        padding:20px;
+        white-space:pre-wrap;
+      }
+      </style>
+    </head>
+    <body>${report}</body>
+    </html>
+  `);
+
+  win.document.close();
+
+  win.print();
 
 }
+
+
+  
 
 
 document.addEventListener('input', () => {
