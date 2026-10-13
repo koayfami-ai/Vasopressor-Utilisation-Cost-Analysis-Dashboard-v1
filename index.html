@@ -1939,30 +1939,44 @@ function saveCase(){
       function exportCSV(){
 
   const headers = [
+
     "Patient Name",
     "MRN",
     "Diagnosis",
+
     "Target MAP",
+    "Time To Target MAP",
+
     "NE Reduction 24h",
     "NE Reduction 72h",
+
     "Shock Index Before",
     "Shock Index 72h",
+
     "CRT Before",
     "CRT 72h",
+
     "Lactate Clearance",
+
+    "Highest FiO2",
+
     "NE Cost Day",
     "NE Cost 72h",
     "NE Cost Total",
+
     "VP Cost Day",
     "VP Cost 72h",
     "VP Cost Total",
+
     "Actual Cost 24h",
     "Theoretical NE Cost",
     "Difference",
-    "Savings %",
-    "Highest FiO2",
+    "Savings",
+
     "Ward LOS",
+
     "Alive To Discharge"
+
   ];
 
   const values = [
@@ -1970,7 +1984,9 @@ function saveCase(){
     document.getElementById('patient-name')?.value || "",
     document.getElementById('mrn')?.value || "",
     document.getElementById('diagnosis')?.value || "",
+
     document.getElementById('target-map')?.value || "",
+    document.getElementById('time-target-map')?.value || "",
 
     document.getElementById('ne-reduction-24h')?.value || "",
     document.getElementById('ne-reduction-72h')?.value || "",
@@ -1982,6 +1998,8 @@ function saveCase(){
     document.getElementById('crt-72h')?.value || "",
 
     document.getElementById('lactate-clearance')?.value || "",
+
+    document.getElementById('highest-fio2')?.value || "",
 
     document.getElementById('ne-cost-day')?.value || "",
     document.getElementById('ne-cost-72')?.value || "",
@@ -1996,8 +2014,6 @@ function saveCase(){
     document.getElementById('cost-difference')?.value || "",
     document.getElementById('cost-savings')?.value || "",
 
-    document.getElementById('highest-fio2')?.value || "",
-
     document.getElementById('ward-los')?.value || "",
 
     document.getElementById('alive-discharge')?.value || ""
@@ -2011,17 +2027,17 @@ function saveCase(){
   const blob =
     new Blob(
       [csv],
-      { type: 'text/csv;charset=utf-8;' }
+      { type: "text/csv;charset=utf-8;" }
     );
 
   const link =
-    document.createElement('a');
+    document.createElement("a");
 
   link.href =
     URL.createObjectURL(blob);
 
   link.download =
-    'vasopressin_case.csv';
+    "vasopressin_case.csv";
 
   link.click();
 
