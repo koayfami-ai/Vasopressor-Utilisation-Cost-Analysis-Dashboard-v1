@@ -82,9 +82,10 @@ DASHBOARD SUMMARY
 
   </h2>
 
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+  <div class="grid grid-cols-2 gap-2">
 
-    <div class="bg-slate-900 border border-slate-700 rounded-lg p-3">
+
+    <div class="bg-slate-900 border border-slate-700 rounded-lg p-2">
 
       <div class="text-xs text-slate-400">
         NE Reduction %
@@ -100,31 +101,15 @@ DASHBOARD SUMMARY
 
     </div>
 
-    <div class="bg-slate-900 border border-slate-700 rounded-lg p-3">
+    <div class="bg-slate-900 border border-slate-700 rounded-lg p-2">
 
       <div class="text-xs text-slate-400">
-        CRT Improvement
+        CRT Trend
       </div>
 
       <div
         id="summary-crt"
         class="text-xl font-bold text-amber-400">
-
-        --
-
-      </div>
-
-    </div>
-
-    <div class="bg-slate-900 border border-slate-700 rounded-lg p-3">
-
-      <div class="text-xs text-slate-400">
-        Lactate Clearance
-      </div>
-
-      <div
-        id="summary-lactate"
-        class="text-xl font-bold text-sky-400">
 
         --
 
@@ -179,22 +164,6 @@ DASHBOARD SUMMARY
 
   --
 
-</div>
-
-    <div class="bg-slate-900 border border-slate-700 rounded-lg p-3">
-
-      <div class="text-xs text-slate-400">
-        Alive At Discharge
-      </div>
-
-      <div
-        id="summary-survival"
-        class="text-xl font-bold text-green-400">
-
-        --
-
-      </div>
-
     </div>
 
   </div>
@@ -232,7 +201,7 @@ CARD 1 : PATIENT & VASOPRESSIN INDICATION
 
       <div>
         <label class="block text-xs font-medium text-slate-300 mb-1">
-          MRN / RN
+          MRN / Ward
         </label>
 
         <input
@@ -1861,18 +1830,10 @@ function updateSummary(){
     'summary-ne-reduction'
   ).textContent =
     document.getElementById(
-      'ne-reduction-72h'
+      'ne-reduction-24h'
     )?.value || '--';
 
-  // Lactate Clearance %
-
-  document.getElementById(
-    'summary-lactate'
-  ).textContent =
-    document.getElementById(
-      'lactate-clearance'
-    )?.value || '--';
-
+ 
   // Time To Target MAP
 
   document.getElementById(
@@ -1917,15 +1878,7 @@ function updateSummary(){
   ).textContent =
     `${crtBefore} → ${crt72}`;
 
-  // Survival
-
-  document.getElementById(
-    'summary-survival'
-  ).textContent =
-    document.getElementById(
-      'alive-discharge'
-    )?.value || '--';
-
+ 
   // Cost Saving %
 
   const savingsBox =
